@@ -1,3 +1,6 @@
+
+
+
 html, body {
     font-size: 16px;
     font-family: $font-roboto;
@@ -13,4 +16,13 @@ html, body {
 
 .invalid {
     border: 1px solid $color-theme-1 !important;
-} 
+}
+.position-static {
+    position: static;
+}
+.position-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
