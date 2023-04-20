@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApp.ViewModels;
 
 namespace WebApp.Controllers;
 
@@ -8,5 +9,12 @@ public class ContactsController : Controller
     {
         ViewData["Title"] = "Contact Us";
         return View();
+    }
+
+    [HttpPost]
+    public IActionResult Index(ContactsViewModel contactsViewModel)
+    {
+        ViewData["Title"] = "Contact Us";
+        return View(contactsViewModel);
     }
 }
