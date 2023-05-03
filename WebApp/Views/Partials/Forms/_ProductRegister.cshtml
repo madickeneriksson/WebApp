@@ -1,0 +1,32 @@
+﻿@model ProductRegistrationViewModel
+@{
+    ViewData["Title"] = "Create new product:";
+}
+
+<section class="general-form">
+    <div class="container">
+        <div class="title">Create new product</div>
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <form asp-action="Register" metod="post" novalidate>
+            <div class="form-group">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control">
+                <span asp-validation-for="Name" class="error"></span>
+            </div>
+              <div class="form-group">
+                <label asp-for="Price" class="form-label"></label>
+                <input asp-for="Price" class="form-control">
+                <span asp-validation-for="Price" class="error"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="form-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Description" class="error"></span>
+            </div>
+       
+            <button type="submit" class="btn-theme">SKAPA PRODUKT</button>
+        </form>
+    </div>
+</section>

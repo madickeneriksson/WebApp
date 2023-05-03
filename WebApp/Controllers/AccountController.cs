@@ -1,64 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using WebApp.Services;
-using WebApp.ViewModels;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
-namespace WebApp.Controllers;
-
-public class AccountController : Controller
+namespace WebApp.Controllers
 {
-    private readonly UserService _userService;
-
-    public AccountController(UserService userService)
+    [Authorize] 
+    //Skydda sidan i utloggat läge
+    public class AccountController : Controller
     {
-        _userService = userService;
-    }
-
-    public IActionResult Register()
-    {
-        return View();
-    }
-
-    [HttpPost]
-    public async Task <IActionResult> Register(RegisterViewModel registerViewModel)
-    {
-        if (ModelState.IsValid)
+        public IActionResult Index()
         {
-            if (await _userService.UserExists(x => x.Email == registerViewModel.Email))
-            {
-                ModelState.AddModelError("", "Det finns redan en användare med denna e-post");
-            }
-            else 
-            {
-                if (await _userService.RegisterAsync(registerViewModel))
-                    return RedirectToAction("Index", "Home");
-                else
-                    ModelState.AddModelError("", "Något gick fel när användare skulle skapas");
-            } 
+            return View();
         }
-        return View(registerViewModel);    
-    }
-
-    public IActionResult Login()
-    {
-        return View();
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Login(LoginViewModel loginViewModel)
-    {
-        if (ModelState.IsValid)
-        {
-            if (await _userService.LoginAsync(loginViewModel))
-            return RedirectToAction("Index", "Account");
-
-            ModelState.AddModelError("", "Felaktig e-postadress eller lösenord");
-        }  
-        return View(loginViewModel);
-    }
-
-
-    public IActionResult Index()
-    {
-        return View();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using WebApp.Models.Entities;
+using WebApp.Models.Identity;
 
 namespace WebApp.ViewModels
 {
@@ -14,6 +15,24 @@ namespace WebApp.ViewModels
         [RegularExpression(@"^[A-Za-zåäöÅÄÖ]+(?:\s[A-Za-zåäöÅÄÖ]+)*$", ErrorMessage = "Du måste ange ett giltigt förnamn")]
         [Display(Name = "Efternamn")]
         public string LastName { get; set; } = null!;
+
+        [Required(ErrorMessage = "Du måste ange en gatuadress")]
+        [Display(Name = "Gatuadress")]
+        public string StreetName { get; set; } = null!;
+
+        [Required(ErrorMessage = "Du måste ange en postkod")]
+        [Display(Name = "Postadress")]
+        public string PostalCode { get; set; } = null!;
+
+        [Required(ErrorMessage = "Du måste ange en stad")]
+        [Display(Name = "Stad")]
+        public string City { get; set; } = null!;
+
+        [Display(Name = "Telefonnummer")]
+        public string? Mobile { get; set; }
+
+        [Display(Name = "Company")]
+        public string? Company { get; set; }
 
         [Required(ErrorMessage = "Du måste ange en e-postadress")]
         [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Du måste ange en giltig e-postadress")]
@@ -33,35 +52,36 @@ namespace WebApp.ViewModels
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; } = null!;
 
-        [Display(Name = "Gatuadress")]
-        public string? StreetName { get; set; }
+        [Display(Name = "Användarbild")]
+        [DataType(DataType.Upload)]
+        public IFormFile? ImageFile { get; set; }
 
-        [Display(Name = "Postadress")]
-        public string? PostalCode { get; set; }
+        [Required(ErrorMessage = "Du måste acceptera villkoren")]
+        [Display(Name = "Accepterar villkor")] 
+        public bool TermsAndConditions { get; set; } = false;
 
-        [Display(Name = "Stad")]
-        public string? City { get; set; }
 
-        //Konventera om till userEntity
-        public static implicit operator UserEntity(RegisterViewModel registerViewModel)
+        public static implicit operator AppUser(RegisterViewModel viewModel) 
         {
-            var userEntity = new UserEntity
-            { Email = registerViewModel.Email };
-            userEntity.GenerateSecurePassword(registerViewModel.Password);
-            return userEntity;
-        }
-
-        public static implicit operator ProfileEntity(RegisterViewModel registerViewModel)
-        {
-            return new ProfileEntity
+            return new AppUser
             {
-                FirstName = registerViewModel.FirstName,
-                LastName = registerViewModel.LastName,
-                StreetName = registerViewModel.StreetName,
-                PostalCode = registerViewModel.PostalCode,
-                City = registerViewModel.City
+                UserName = viewModel.Email,
+                FirstName = viewModel.FirstName,
+                LastName = viewModel.LastName,
+                Email = viewModel.Email,
+                PhoneNumber = viewModel.Mobile,
+                CompapanyName = viewModel.Company,
             };
-            
         }
+        public static implicit operator AddressEntity(RegisterViewModel viewModel)
+        {
+            return new AddressEntity
+            {
+                StreetName = viewModel.StreetName,
+                PostalCode = viewModel.PostalCode,
+                City = viewModel.City,
+            };
+        }
+
     }
 }

@@ -1,5 +1,4 @@
 ﻿@{
-    ViewData["Title"] = "Mitt konto";
+    ViewData["Title"] = User.Identity?.Name;
 }
-
-<partial name="/Views/Partials/_AccountHeader.cshtml" />
+<partial name="/Views/Partials/_Account.cshtml" />
