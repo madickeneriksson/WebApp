@@ -1,4 +1,4 @@
 ﻿@{
-    ViewData["Title"] = User.Identity?.Name;
+    ViewData["Title"] = User.FindFirst("DisplayName")?.Value;
 }
 <partial name="/Views/Partials/_Account.cshtml" />

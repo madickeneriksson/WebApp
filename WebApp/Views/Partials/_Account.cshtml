@@ -1,4 +1,8 @@
-﻿
-<div>
-    <div class="title">Hejsan</div>
+﻿@{
+    ViewData["Title"] = User.FindFirst("DisplayName")?.Value;
+}
+<section class="contact-form">
+    <div class="container">
+<div class="title">Välkommen @ViewData["Title"] </div>
 </div>
+</section>
