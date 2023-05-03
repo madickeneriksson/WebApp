@@ -17,9 +17,15 @@ namespace WebApp.Models.Identity
         protected override async Task<ClaimsIdentity> GenerateClaimsAsync(AppUser user)
         {
             var claimsIdentity = await base.GenerateClaimsAsync(user);
+            //var userProfileEntity = await userManager.GetUserAsync(user.Id);
 
-            claimsIdentity.AddClaim(new Claim("DisplayName", $"{user.FirstName} {user.LastName}"));       
+            claimsIdentity.AddClaim(new Claim("DisplayName", $"{user.FirstName} {user.LastName}"));
 
+            var roles = await UserManager.GetRolesAsync(user);
+            foreach (var role in roles) 
+            {
+             claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, role));
+            }
             return claimsIdentity;
 
         }
