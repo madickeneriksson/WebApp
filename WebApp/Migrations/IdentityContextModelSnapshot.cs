@@ -47,14 +47,6 @@ namespace WebApp.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "0454157a-54ed-47d1-aa3d-3cdc15336b4a",
-                            Name = "System Administrator",
-                            NormalizedName = "SYSTEM ADMINISTRATOR"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
