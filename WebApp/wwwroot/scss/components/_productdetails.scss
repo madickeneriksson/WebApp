@@ -1,0 +1,96 @@
+﻿.product-details {
+    margin-top: 500px;
+
+    .container {
+
+        .details {
+            display: flex;
+            justify-content: space-between;
+
+
+            .product-image {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+
+            .details-image {
+                padding-top: 20px;
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+
+            .content {
+                padding: 20px;
+                font-family: $font-poppins;
+                color: $color-dark-2;
+
+                .title {
+                    font-size: 30px;
+                    font-weight: $font-weight-bold;
+                    line-height: 1.2;
+                    padding-bottom: 15px;
+                }
+
+                .small-description {
+                    font-family: $font-poppins;
+                    color: $color-dark-2;
+                    font-size: 20px;
+                }
+
+                .rating {
+                    margin-top: 20px;
+                    display: flex;
+
+                    .reviews {
+                        margin-left: 10px;
+                        font-family: $font-poppins;
+                        color: $color-dark-2;
+                        font-size: 16px;
+                    }
+                }
+
+                .price {
+                    font-family: $font-poppins;
+                    color: $color-dark-2;
+                    font-size: 25px;
+                    font-weight: $font-weight-bold;
+                }
+
+                .add-to-cart {
+                    .btn-group {
+                        button {
+                            color: $color-dark-4;
+                        }
+
+                        .btn-outline-primary {
+                            color: $color-dark-4;
+                        }
+                    }
+
+                    .btn-theme {
+                        margin-left: 60px;
+                    }
+                }
+
+                .colour {
+                    display: block;
+                    margin: 20px 40px;
+                }
+
+                .btn-outline-white {
+                    margin: 40px 60px;
+                }
+
+                .category {
+                    font-family: $font-poppins;
+                    color: $color-dark-2;
+                    font-size: 15px;
+                    font-weight: $font-weight-bold;
+                    margin: 30px 60px;
+                }
+            }
+        }
+    }
+}

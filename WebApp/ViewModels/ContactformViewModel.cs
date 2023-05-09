@@ -3,7 +3,7 @@ using System.Xml.Linq;
 
 namespace WebApp.ViewModels
 {
-    public class ContactsViewModel
+    public class ContactformViewModel
     {
         [Required(ErrorMessage = "Du måste ange ett förnamn")]
         [RegularExpression(@"^[A-Za-zåäöÅÄÖ]+(?:\s[A-Za-zåäöÅÄÖ]+)*$", ErrorMessage = "Du måste ange ett giltigt namn")]
@@ -17,7 +17,7 @@ namespace WebApp.ViewModels
         public string Email { get; set; } = null!;
 
         [Required(ErrorMessage = "Du måste ange ett telefonnummer")]
-        [RegularExpression(@"^(?:(?:\+|00)46|0) ?(?:[1-9]\d{1,2}-\d{2} ?\d{2}|\d{2}-\d{7})$", ErrorMessage = "Du måste ange ett giltigt telefonnummer")]
+       
         [Display(Name = "Telefonnummer")]
         public string PhoneNumber { get; set; } = null!;
 

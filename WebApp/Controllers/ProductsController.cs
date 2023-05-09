@@ -26,28 +26,15 @@ public class ProductsController : Controller
         };
         return View(viewModel);
     }
-
-    public IActionResult Search()
+    public IActionResult Details()
     {
         ViewData["Title"] = "Search for products";
         return View();
     }
 
-    public IActionResult Register()
+    public IActionResult Search()
     {
-        return View();
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Register(ProductRegistrationViewModel productRegistrationViewModel)
-    {
-        if (ModelState.IsValid)
-        {
-            if (await _productsService.CreateAsync(productRegistrationViewModel))
-                return RedirectToAction("Index", "Products");
-
-            ModelState.AddModelError("", "Något gick fel vid skapandet av produkten");
-        }
+        ViewData["Title"] = "Search for products";
         return View();
     }
 

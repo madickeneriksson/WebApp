@@ -40,7 +40,7 @@ namespace WebApp.Services
 
             if (!await _userManager.Users.AnyAsync())
                 roleName = "admin";
-            
+
 
             var result = await _userManager.CreateAsync(appUser, viewModel.Password);
             if (result.Succeeded)
@@ -52,7 +52,7 @@ namespace WebApp.Services
                 {
                     await _addressService.AddAddressAsync(appUser, addressEntity);
                     return true;
-                }  
+                }
             }
             return false;
         }
@@ -62,10 +62,11 @@ namespace WebApp.Services
             var appUser = await _userManager.Users.FirstOrDefaultAsync(x => x.Email == viewModel.Email);
             if (appUser != null)
             {
-               var result = await _signInManager.PasswordSignInAsync(appUser, viewModel.Password, viewModel.RememberMe, false);
+                var result = await _signInManager.PasswordSignInAsync(appUser, viewModel.Password, viewModel.RememberMe, false);
                 return result.Succeeded;
             }
             return false;
         }
+ 
     }
 }

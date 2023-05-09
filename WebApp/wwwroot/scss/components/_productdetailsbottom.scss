@@ -1,0 +1,21 @@
+﻿.showcase-bottom {
+    margin-top: 40px;
+    background-color: $color-dark-5;
+    align-items: center;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        padding: 100px;
+
+        .image {
+            display: block;
+            height: auto;
+            width: 100%;
+
+            img {
+                padding: 30px;
+            }
+        }
+    }
+}

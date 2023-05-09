@@ -1,11 +1,11 @@
 ﻿@model ProductsIndexViewModel
 @{
     ViewData["Title"] = "Produkter";
-  //  var products = await productsService.GetAllAsync();
+    var products = await productsService.GetAllAsync();
 }
 
 <div style="padding-top: 150px;">
-    <a class="link" asp-controller="Products" asp-action="Register">Skapa ny produkt</a>
+
     <partial name="/Views/Partials/_GridCollection.cshtml" model="@Model.All" />
     <partial name="/Views/Partials/_ShowProduct.cshtml" />
 

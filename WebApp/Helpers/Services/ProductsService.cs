@@ -31,7 +31,7 @@ namespace WebApp.Helpers.Services
             }
 
         }
-        /*
+        
             public async Task<IEnumerable<ProductModel>> GetAllAsync()
             {
                 var products = new List<ProductModel>();
@@ -43,7 +43,7 @@ namespace WebApp.Helpers.Services
                 }
                 return products;
             }
-        */
+        
     }
 
 }

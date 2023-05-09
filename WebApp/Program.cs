@@ -13,6 +13,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Sql")));
 
 builder.Services.AddScoped<ProductsService>();
+builder.Services.AddScoped<ContactFormService>();
 builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<AddressService>();
 builder.Services.AddScoped<UserAddressRepository>();

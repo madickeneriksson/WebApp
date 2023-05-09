@@ -1,0 +1,33 @@
+﻿.product-info {
+    .container {
+        .btn-outline-white {
+            margin: 20px 0px;
+            width: 320px;
+        }
+
+        .title {
+            font-family: $font-poppins;
+            color: $color-dark-2;
+            font-size: 25px;
+            font-weight: $font-weight-bold;
+        }
+
+        .product-info {
+            display: flex;
+            justify-content: space-between;
+
+            .text {
+                padding: 10px;
+                font-family: $font-poppins;
+                color: $color-dark-2;
+                font-size: 16px;
+                line-height: 1.2;
+            }
+
+            .image {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}

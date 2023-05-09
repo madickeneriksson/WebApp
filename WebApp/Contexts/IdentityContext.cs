@@ -17,6 +17,7 @@ namespace WebApp.Contexts
         public DbSet<AddressEntity> AspNetAddresses { get; set; }
         public DbSet<UserAddressEntity> AspNetUserAddresses { get; set; }
         public DbSet<ProductEntity> Products { get; set; }
+        public DbSet <ContacFormEntity> ContactForm { get; set;}
 
       
     }
