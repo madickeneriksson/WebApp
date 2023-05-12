@@ -31,9 +31,19 @@ namespace WebApp.Controllers
         public async Task<IActionResult> ProductRegister(ProductRegistrationViewModel productRegistrationViewModel)
         {
             if (ModelState.IsValid)
+               
             {
-                if (await _productsService.CreateAsync(productRegistrationViewModel))
+                var productModel = await _productsService.CreateAsync(productRegistrationViewModel);
+                if(productModel != null) 
+                {
+                    if (productRegistrationViewModel.Image!= null)
+                        await _productsService.UploadImageAsync(productModel, productRegistrationViewModel.Image);
                     return RedirectToAction("index", "admin");
+                   
+                }
+                
+                    
+              
 
                 ModelState.AddModelError("", "Något gick fel vid skapandet av produkten");
             }

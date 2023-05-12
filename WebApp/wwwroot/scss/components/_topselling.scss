@@ -24,15 +24,7 @@
         @include xl {
             grid-template-columns: repeat(7, 1fr);
         }
-
-        .collection-item {
-            .body {
-                .title {
-                    font-size: 14px;
-                    font-weight: $font-weight-medium;
-                }
-            }
-        }
+  
     }
 
     .load-more {

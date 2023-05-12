@@ -3,28 +3,51 @@
     ViewData["Title"] = "Create new product:";
 }
 
-<section class="general-form">
+<section class="productregister-form">
     <div class="container">
-        <div class="title">Create new product</div>
+        <div class="title">@ViewData["Title"] </div>
 
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div asp-validation-summary="ModelOnly" class="form-group error"></div>
 
-        <form asp-action="Register" metod="post" novalidate>
-            <div class="form-group">
+        <form enctype="multipart/form-data" asp-action="ProductRegister" metod="post" novalidate>
+            <div class="articlenumber form-group">
+                <label asp-for="ArticleNumber" class="form-label"></label>
+                <input asp-for="ArticleNumber" class="form-control">
+                <span asp-validation-for="ArticleNumber" class="error"></span>
+            </div>
+            <div class="name form-group">
                 <label asp-for="Name" class="form-label"></label>
                 <input asp-for="Name" class="form-control">
                 <span asp-validation-for="Name" class="error"></span>
             </div>
-              <div class="form-group">
+              <div class="price form-group">
                 <label asp-for="Price" class="form-label"></label>
                 <input asp-for="Price" class="form-control">
                 <span asp-validation-for="Price" class="error"></span>
             </div>
-            <div class="form-group">
+
+            <div class="description form-group">
                 <label asp-for="Description" class="form-label"></label>
                 <textarea asp-for="Description" class="form-control" rows="4"></textarea>
                 <span asp-validation-for="Description" class="error"></span>
             </div>
+                <div class="rating form-group">
+                <label asp-for="Rating" class="form-label"></label>
+                <input asp-for="Rating" class="form-control">
+                <span asp-validation-for="Rating" class="error"></span>
+            </div>
+            <div class="category form-group">
+                <label asp-for="Category" class="form-label"></label>
+                <input asp-for="Category" class="form-control">
+                <span asp-validation-for="Category" class="error"></span>
+            </div>
+            <div class="image form-group">
+                <label asp-for="Image" class="form-label"></label>
+                <input asp-for="Image" class="form-control">
+                <span asp-validation-for="Image" class="error"></span>
+            </div>
+            
+         
        
             <button type="submit" class="btn-theme">SKAPA PRODUKT</button>
         </form>

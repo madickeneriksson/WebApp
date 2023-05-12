@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using WebApp.Helpers.Services;
 using WebApp.Models.Identity;
 using WebApp.ViewModels;
 
@@ -19,6 +20,7 @@ namespace WebApp.Services
             _addressService = addressService;
             _signInManager = signInManager;
             _roleManager = roleManager;
+
         }
         //Kontrollera om användare finns
         public async Task<bool> UserAlreadyExistsAsync(Expression<Func<AppUser, bool>> expression)

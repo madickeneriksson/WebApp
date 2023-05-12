@@ -20,14 +20,14 @@ public class ContactsController : Controller
     }
 
     [HttpPost]
-    public async Task <IActionResult> Index(ContactformViewModel contactsViewModel)
+    public async Task <IActionResult> Index (ContactformViewModel contactsViewModel)
     {
         if (ModelState.IsValid)
         {
             if (await _contactFormService.CreateAsync(contactsViewModel))
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("index", "home");
 
-            ModelState.AddModelError("", "Något gick fel vid skapandet av produkten");
+            ModelState.AddModelError("", "Något gick fel");
         }
         return View();
     }

@@ -1,9 +1,13 @@
 ﻿@{
     ViewData["Title"] = User.FindFirst("DisplayName")?.Value;
 }
-<section class="contact-form">
+<section class="admin-view">
     <div class="container">
-<div class="title">Välkommen @ViewData["Title"] </div>
-        <a class="link" asp-controller="Admin" asp-action="Index">Adminsida</a>
+    <div class="title">Välkommen @ViewData["Title"] </div>
+    <div class="admin-link">
+            <a class="link" asp-controller="Admin" asp-action="Index">Adminsida</a>
+    </div>
+
+
 </div>
 </section>

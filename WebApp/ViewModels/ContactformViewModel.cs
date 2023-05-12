@@ -1,10 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
+using WebApp.Models;
+using WebApp.Models.Entities;
 
 namespace WebApp.ViewModels
 {
     public class ContactformViewModel
     {
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "Du måste ange ett förnamn")]
         [RegularExpression(@"^[A-Za-zåäöÅÄÖ]+(?:\s[A-Za-zåäöÅÄÖ]+)*$", ErrorMessage = "Du måste ange ett giltigt namn")]
         [Display(Name = "Ditt namn")]
@@ -27,5 +30,19 @@ namespace WebApp.ViewModels
         [Required(ErrorMessage = "Du måste ange ett meddelande")]
         [Display(Name = "Meddelande")]
         public string Message { get; set; } = null!;
+
+        public static implicit operator ContactFormEntity(ContactformViewModel contactformViewModel)
+        {
+            return new ContactFormEntity
+            {
+                Id = contactformViewModel.Id
+                , Name = contactformViewModel.Name,
+                Email = contactformViewModel.Email,
+                PhoneNumber = contactformViewModel.PhoneNumber,
+                Company = contactformViewModel.Company,
+                Message = contactformViewModel.Message,
+            };
+
+        }
     }
 }

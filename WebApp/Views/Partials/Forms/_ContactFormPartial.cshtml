@@ -1,12 +1,12 @@
 ﻿@model ContactformViewModel
 @{
-    ViewData["Title"] = "kontaktformunlär";
+    ViewData["Title"] = "kontaktformulär";
 }
 <section class="contact-form">
     <div class="container">
         <div class="title">Write something</div>
-
-        <form asp-action="Index" method="post" novalidate>
+          <div asp-validation-summary="ModelOnly" class="form-group error"></div>
+        <form asp-action="index" method="post" novalidate>
             <div class="form-group">
                 <label asp-for="Name" class="form-label"></label>
                 <input asp-for="Name" class="form-control">

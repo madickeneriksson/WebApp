@@ -1,3 +1,9 @@
+﻿@model GridCollectionViewModel
+
+@{
+    ViewData["Title"] = "Produkter";
+    var products = await productsService.GetAllAsync();
+}
 ﻿<section class="up-to-sell">
     <div class="container">
         <div class="collection-grid">
@@ -45,3 +51,7 @@
         </div>
     </div>
 </section>
+
+
+
+

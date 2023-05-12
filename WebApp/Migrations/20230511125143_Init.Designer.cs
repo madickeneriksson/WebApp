@@ -12,8 +12,8 @@ using WebApp.Contexts;
 namespace WebApp.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20230508154302_ContactForm")]
-    partial class ContactForm
+    [Migration("20230511125143_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -183,7 +183,7 @@ namespace WebApp.Migrations
                     b.ToTable("AspNetAddresses");
                 });
 
-            modelBuilder.Entity("WebApp.Models.Entities.ContacFormEntity", b =>
+            modelBuilder.Entity("WebApp.Models.Entities.ContactFormEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -217,13 +217,16 @@ namespace WebApp.Migrations
 
             modelBuilder.Entity("WebApp.Models.Entities.ProductEntity", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("ArticleNumber")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Category")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -233,7 +236,10 @@ namespace WebApp.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
 
-                    b.HasKey("Id");
+                    b.Property<string>("Rating")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ArticleNumber");
 
                     b.ToTable("Products");
                 });

@@ -1,4 +1,5 @@
-﻿using WebApp.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using WebApp.Contexts;
 using WebApp.Models.Entities;
 using WebApp.ViewModels;
 
@@ -17,19 +18,16 @@ namespace WebApp.Helpers.Services
         {
             try
             {
-                ContacFormEntity contactFormEntity = contactformViewModel;
-               
-
-
+                ContactFormEntity contactFormEntity = contactformViewModel;
                 _context.ContactForm.Add(contactFormEntity);
                 await _context.SaveChangesAsync();
                 return true;
-            }
-            catch
+            } catch
             {
                 return false;
             }
-
         }
+
+
     }
 }

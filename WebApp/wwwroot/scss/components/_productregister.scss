@@ -1,0 +1,79 @@
+﻿.productregister-form {
+    padding: 20px 0 60px 0;
+
+    @include lg {
+        padding: 100px 0;
+    }
+
+    .container {
+        border: 0px solid $color-dark-5;
+        padding: 30px;
+
+        @include md {
+            border: 1px solid $color-dark-5;
+            width: 80%;
+        }
+    }
+
+    .title {
+        margin-bottom: 40px;
+    }
+
+    form {
+        display: grid;
+        column-gap: 30px;
+        row-gap: 30px;
+        grid-template-columns: 1fr;
+        grid-template-areas: "articlenumber" "name" "price" "description" "rating" "category" "image" "button";
+
+        .validation-summnary-errors {
+            grid-area: message;
+            margin: 10px 0;
+
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                color: $color-theme-1;
+                font-size: 1.2rem;
+            }
+        }
+
+
+        .articlenumber {
+            grid-area: articlenumber;
+            margin: 10px 0;
+        }
+
+        .name {
+            grid-area: name;
+        }
+
+        .price {
+            grid-area: price;
+        }
+
+        .description {
+            grid-area: description;
+        }
+
+        .category {
+            grid-area: category;
+        }
+
+        .image {
+            grid-area: image;
+        }
+
+        .button {
+            grid-area: button;
+
+            @include lg {
+                display: flex;
+                justify-self: flex-start;
+            }
+        }
+    }
+}
