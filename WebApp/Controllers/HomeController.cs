@@ -33,18 +33,15 @@ public class HomeController : Controller
                     new GridCollectionItemViewModel { Id = "1", Title = "Apple watch collection", Price = 30, ImageUrl = "images/placeholders/270x295.svg" },
                     new GridCollectionItemViewModel { Id = "1", Title = "Apple watch collection", Price = 30, ImageUrl = "images/placeholders/270x295.svg" },
 
-                },
-                UpToSell = new List<UpToSellBoxViewModel>
-                {
-                    new UpToSellBoxViewModel { BigTitle ="UP TO SELL", Title ="50% OFF", Ingress ="Get the Best Price", Text="Get the best daily offer et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren no sea taki", Link = "Discover More"}
                 }
             },
 
+
             TopSelling = new GridCollectionViewModel
             {
-                Title= "Top selling products in this week",
-                GridItems= new List<GridCollectionItemViewModel>
-                { 
+                Title = "Top selling products in this week",
+                GridItems = new List<GridCollectionItemViewModel>
+                {
                     new GridCollectionItemViewModel { Id = "1", Title = "Apple watch collection", Price = 30, ImageUrl = "images/placeholders/270x295.svg" },
                     new GridCollectionItemViewModel { Id = "1", Title = "Apple watch collection", Price = 30, ImageUrl = "images/placeholders/270x295.svg" },
                     new GridCollectionItemViewModel { Id = "1", Title = "Apple watch collection", Price = 30, ImageUrl = "images/placeholders/270x295.svg" },
@@ -57,8 +54,8 @@ public class HomeController : Controller
 
 
         };
-        
+
         return View(viewModel);
     }
-    
+
 }

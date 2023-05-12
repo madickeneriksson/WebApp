@@ -9,12 +9,12 @@ namespace WebApp.Controllers
     [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
-        private readonly ProductsService _productsService;
+        private readonly ProductService _productService;
         private readonly AuthenticationService _auth;
 
-        public AdminController(ProductsService productsService, AuthenticationService auth)
+        public AdminController(ProductService productService, AuthenticationService auth)
         {
-            _productsService = productsService;
+            _productService = productService;
             _auth = auth;
         }
 
@@ -30,22 +30,19 @@ namespace WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> ProductRegister(ProductRegistrationViewModel productRegistrationViewModel)
         {
-            if (ModelState.IsValid)
-               
+            if (ModelState.IsValid)  
             {
-                var productModel = await _productsService.CreateAsync(productRegistrationViewModel);
-                if(productModel != null) 
+                var product = await _productService.CreateAsync(productRegistrationViewModel);
+                if (product != null)
                 {
                     if (productRegistrationViewModel.Image!= null)
-                        await _productsService.UploadImageAsync(productModel, productRegistrationViewModel.Image);
+                      await _productService.UploadImageAsync(product, productRegistrationViewModel.Image);
                     return RedirectToAction("index", "admin");
-                   
-                }
-                
                     
-              
-
+                }
                 ModelState.AddModelError("", "Något gick fel vid skapandet av produkten");
+
+
             }
             return View();
         }

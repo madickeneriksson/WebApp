@@ -12,7 +12,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Sql")));
 
-builder.Services.AddScoped<ProductsService>();
+
+builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<ProductRepository>();
 builder.Services.AddScoped<ContactFormService>();
 builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<AddressService>();

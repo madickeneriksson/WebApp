@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using WebApp.Helpers.Services;
+using WebApp.Models.dto;
 using WebApp.Models.Identity;
 using WebApp.ViewModels;
 
@@ -58,6 +59,14 @@ namespace WebApp.Services
             }
             return false;
         }
+
+        // Hämta användare
+        public async Task<List<AppUser>> GetUsersAsync()
+        {
+            return await _userManager.Users.ToListAsync();
+        }
+
+
         // Logga in användare
         public async Task<bool> LoginAsync(LoginViewModel viewModel)
         {

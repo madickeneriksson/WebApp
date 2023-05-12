@@ -1,23 +1,7 @@
-﻿@model ProductsIndexViewModel
+﻿@model ProductsViewModel
+
 @{
     ViewData["Title"] = "Produkter";
-   var products = await productsService.GetAllAsync();
-}
-@if (products != null)
-{
-    foreach(var product in products)
-    {
-         <img src="" alt="@product.Price">
-        <div class="body">
-            <div class="title">@product.Name</div>
-                <div class="info">
-                    <div class="price">@product.Price</div>
-                    <i class="add-cart fa-regular fa-cart-plus"></i>
-                </div>
-        </div>
-    }
+
 }
 
-
-    
-    

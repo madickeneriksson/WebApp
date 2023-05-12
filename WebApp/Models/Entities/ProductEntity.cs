@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WebApp.Models.dto;
 
 namespace WebApp.Models.Entities
 {
@@ -16,17 +17,16 @@ namespace WebApp.Models.Entities
         [Column(TypeName = "money")]
         public decimal Price { get; set; }
 
-        public static implicit operator ProductModel(ProductEntity productEntity)
-        {    return new ProductEntity
-            
+        public static implicit operator Product(ProductEntity productEntity)
+        {
+            return new Product
             {
-                ArticleNumber= productEntity.ArticleNumber,
-                Name= productEntity.Name,
-                Description= productEntity.Description,
-                Rating= productEntity.Rating,
-                Category= productEntity.Category,
-                ImageUrl= productEntity.ImageUrl,
-
+                ArticleNumber = productEntity.ArticleNumber,
+                Name = productEntity.Name,
+                Description = productEntity.Description,
+                Rating = productEntity.Rating,
+                Category = productEntity.Category,
+                ImageUrl = productEntity.ImageUrl,
             };
         }
 

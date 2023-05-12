@@ -6,26 +6,22 @@ namespace WebApp.Controllers;
 
 public class ProductsController : Controller
 {
-    private readonly ProductsService _productsService;
+    private readonly ProductService _productService;
 
-    public ProductsController(ProductsService productsService)
+    public ProductsController(ProductService productService)
     {
-        _productsService = productsService;
+        _productService = productService;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-
-        var viewModel = new ProductsIndexViewModel
+        var viewModel = new ProductsViewModel
         {
-            All = new GridCollectionViewModel
-            {
-                Title = "All Products",
-                Categories = new List<string> { "All", "Mobile" }
-            }
-        };
+            Products = await _productService.GetAllAsync()
+    };
         return View(viewModel);
     }
+
     public IActionResult Details()
     {
         ViewData["Title"] = "Search for products";
