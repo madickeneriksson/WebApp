@@ -11,9 +11,9 @@
 
         <form enctype="multipart/form-data" asp-action="ProductRegister" metod="post" novalidate>
             <div class="articlenumber form-group">
-                <label asp-for="ArticleNumber" class="form-label"></label>
-                <input asp-for="ArticleNumber" class="form-control">
-                <span asp-validation-for="ArticleNumber" class="error"></span>
+                <label asp-for="Id" class="form-label"></label>
+                <input asp-for="Id" class="form-control">
+                <span asp-validation-for="Id" class="error"></span>
             </div>
             <div class="name form-group">
                 <label asp-for="Name" class="form-label"></label>
@@ -36,11 +36,7 @@
                 <input asp-for="Rating" class="form-control">
                 <span asp-validation-for="Rating" class="error"></span>
             </div>
-            <div class="category form-group">
-                <label asp-for="Category" class="form-label"></label>
-                <input asp-for="Category" class="form-control">
-                <span asp-validation-for="Category" class="error"></span>
-            </div>
+
             <div class="image form-group">
                 <label asp-for="Image" class="form-label"></label>
                 <input asp-for="Image" class="form-control">

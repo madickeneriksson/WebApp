@@ -20,7 +20,7 @@ namespace WebApp.Helpers.Services
 
         public async Task<Product> CreateAsync(ProductEntity entity)
         {
-            var _entity = await _productRepo.GetAsync(x => x.ArticleNumber == entity.ArticleNumber);
+            var _entity = await _productRepo.GetAsync(x => x.Id == entity.Id);
             if (_entity == null)
             {
                 _entity = await _productRepo.AddAsync(entity);

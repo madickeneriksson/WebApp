@@ -16,10 +16,17 @@ namespace WebApp.Contexts
 
         public DbSet<AddressEntity> AspNetAddresses { get; set; }
         public DbSet<UserAddressEntity> AspNetUserAddresses { get; set; }
-        public DbSet<ProductEntity> Products { get; set; }
         public DbSet<ContactFormEntity> ContactForm { get; set;}
 
-      
+        public DbSet<ProductEntity> Products { get; set; }
+
+        public DbSet<TagEntity> Tags { get; set; }
+
+        public DbSet<ProductTagEntity> ProductTags { get; set; }
+
+        public DbSet<ProductCategoryEntity> ProductCategories { get; set; }
+
+
     }
 }
  
