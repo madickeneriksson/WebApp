@@ -1,6 +1,6 @@
 ﻿@model ProductRegistrationViewModel
 @{
-    ViewData["Title"] = "Create new product:";
+    ViewData["Title"] = "Create a new product:";
 }
 
 <section class="productregister-form">
@@ -11,9 +11,9 @@
 
         <form enctype="multipart/form-data" asp-action="ProductRegister" metod="post" novalidate>
             <div class="articlenumber form-group">
-                <label asp-for="Id" class="form-label"></label>
-                <input asp-for="Id" class="form-control">
-                <span asp-validation-for="Id" class="error"></span>
+                <label asp-for="ArticleNumber" class="form-label"></label>
+                <input asp-for="ArticleNumber" class="form-control">
+                <span asp-validation-for="ArticleNumber" class="error"></span>
             </div>
             <div class="name form-group">
                 <label asp-for="Name" class="form-label"></label>
@@ -36,15 +36,33 @@
                 <input asp-for="Rating" class="form-control">
                 <span asp-validation-for="Rating" class="error"></span>
             </div>
+   
 
             <div class="image form-group">
                 <label asp-for="Image" class="form-label"></label>
                 <input asp-for="Image" class="form-control">
                 <span asp-validation-for="Image" class="error"></span>
             </div>
-            
-         
-       
+
+            <div class="mb-3">
+                @foreach (SelectListItem tag in ViewBag.Tags)
+                {
+                    <div>
+                        <input type="checkbox" name="Tags" id="tag-@tag.Text-@tag.Value" value="@tag.Value" checked="@tag.Selected" class="form-check-input" />
+                        <label for="tag-@tag.Text-@tag.Value" class="form-check-label">@tag.Text</label>
+                    </div>
+                }
+            </div>
+             <div class="mb-3">
+                @foreach (SelectListItem category in ViewBag.Categorys)
+                {
+                        <div>
+                            <input type="checkbox" name="Categorys" id="category-@category.Text-@category.Value" value="@category.Value" checked="@category.Selected" class="form-check-input" />
+                            <label for="category-@category.Text-@category.Value" class="form-check-label">@category.Text</label>
+                        </div>
+                }
+            </div>
+
             <button type="submit" class="btn-theme">SKAPA PRODUKT</button>
         </form>
     </div>

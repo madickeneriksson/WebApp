@@ -6,8 +6,8 @@ namespace WebApp.Models.Entities
 {
     public partial class ProductEntity
     {
-
-        public int Id { get; set; }
+        [Key]
+        public string ArticleNumber { get; set; } = null!;
         public string Name { get; set; } = null!;
         public string? Description { get; set; }
         public string? Rating { get; set; }
@@ -25,11 +25,13 @@ namespace WebApp.Models.Entities
         {
             return new Product
             {
-                Id = productEntity.Id,
+                ArticleNumber= productEntity.ArticleNumber,
                 Name = productEntity.Name,
                 Description = productEntity.Description,
                 Rating = productEntity.Rating,
                 ImageUrl = productEntity.ImageUrl,
+                Price = productEntity.Price,
+                ProductCategory = productEntity.ProductCategory,
             };
         }
 

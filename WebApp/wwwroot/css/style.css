@@ -1259,7 +1259,7 @@ footer .container {
   column-gap: 30px;
   row-gap: 30px;
   grid-template-columns: 1fr;
-  grid-template-areas: "articlenumber" "name" "price" "description" "rating" "category" "image" "button";
+  grid-template-areas: "articlenumber" "name" "price" "description" "rating" "category" "tags" "image" "button";
 }
 .productregister-form form .validation-summnary-errors {
   grid-area: message;
@@ -1289,6 +1289,9 @@ footer .container {
 }
 .productregister-form form .category {
   grid-area: category;
+}
+.productregister-form form .tags {
+  grid-area: tags;
 }
 .productregister-form form .image {
   grid-area: image;

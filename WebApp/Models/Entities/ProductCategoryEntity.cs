@@ -1,5 +1,4 @@
-﻿using static WebApp.Models.Entities.ProductEntity;
-
+﻿using WebApp.Models.dtos;
 namespace WebApp.Models.Entities;
 
 
@@ -9,6 +8,19 @@ namespace WebApp.Models.Entities;
         public string CategoryName { get; set; } = null!;
 
         public ICollection<ProductEntity> Products { get; set; } = new HashSet<ProductEntity>();
+
+    public static implicit operator ProductCategory(ProductCategoryEntity entity)
+    {
+        if (entity != null)
+        {
+            return new ProductCategory
+            {
+                Id = entity.Id,
+                CategoryName = entity.CategoryName,
+            };
+        }
+        return null!;
+    }
 }
 
 

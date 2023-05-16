@@ -8,7 +8,7 @@ public class ProductRegistrationViewModel
 {
     [Required(ErrorMessage = "Du måste ange ett artikelnummer")]
     [Display(Name = "Productens artikelnummer")]
-    public int Id { get; set; } 
+    public string ArticleNumber { get; set; } = null!;
 
     [Required(ErrorMessage = "Du måste ange ett produktnanmn")]
     [Display(Name = "Produktens namn")]
@@ -28,21 +28,24 @@ public class ProductRegistrationViewModel
 
     [Display(Name = "Produktbild (valfritt)")]
     [DataType(DataType.Upload)]
-    public IFormFile? Image { get; set; } 
+    public IFormFile? Image { get; set; }
+
+  //  public int ProductCategoryId { get; set; }
+   // public List<string>? Tags { get; set; } = new List<string>();
 
     public static implicit operator ProductEntity(ProductRegistrationViewModel productRegistrationViewModel)
     {
         var entity = new ProductEntity
         {
-            
+            ArticleNumber= productRegistrationViewModel.ArticleNumber,
             Name = productRegistrationViewModel.Name,
             Description = productRegistrationViewModel.Description,
             Rating= productRegistrationViewModel.Rating,
-
+          //  ProductCategoryId = productRegistrationViewModel.ProductCategoryId,
             Price = productRegistrationViewModel.Price,
         };
         if (productRegistrationViewModel.Image != null)
-            entity.ImageUrl = $"{productRegistrationViewModel.Id}_{productRegistrationViewModel.Image?.FileName}";
+            entity.ImageUrl = $"{productRegistrationViewModel.ArticleNumber}_{productRegistrationViewModel.Image?.FileName}";
         return entity;
     }
 }

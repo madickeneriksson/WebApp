@@ -11,24 +11,30 @@ namespace WebApp.Controllers
     {
         private readonly ProductService _productService;
         private readonly AuthenticationService _auth;
+        private readonly TagService _tagService;
+        private readonly ProductCategoryService _categoryService;
 
-        public AdminController(ProductService productService, AuthenticationService auth)
+        public AdminController(ProductService productService, AuthenticationService auth, TagService tagService, ProductCategoryService categoryService)
         {
             _productService = productService;
             _auth = auth;
+            _tagService = tagService;
+            _categoryService = categoryService;
         }
 
         public IActionResult Index()
         {
             return View();
         }
-        public IActionResult ProductRegister()
+        public async Task <IActionResult> ProductRegister()
         {
+            ViewBag.Tags = await _tagService.GetAllTagsAsync();
+            ViewBag.Categorys = await _categoryService.GetAllCategoryAsync();
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> ProductRegister(ProductRegistrationViewModel productRegistrationViewModel)
+        public async Task<IActionResult> ProductRegister(ProductRegistrationViewModel productRegistrationViewModel, string[] tags, string[] categorys)
         {
             if (ModelState.IsValid)  
             {
@@ -44,6 +50,8 @@ namespace WebApp.Controllers
 
 
             }
+            ViewBag.Tags = await _tagService.GetAllTagsAsync(tags);
+            ViewBag.Categorys = await _categoryService.GetAllCategoryAsync(categorys);
             return View();
         }
 

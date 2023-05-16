@@ -1,26 +1,34 @@
 ﻿using WebApp.Helpers.Repositories;
 using WebApp.Models;
 using WebApp.Models.dto;
+using WebApp.Models.dtos;
 using WebApp.Models.Entities;
+using WebApp.ViewModels;
 
 namespace WebApp.Helpers.Services
 {
     public class ProductService
     {
         private readonly ProductRepository _productRepo;
+        private readonly ProductCategoryService _categoryService;
+        private readonly TagService _tagService;
+        private readonly ProductTagRepository _tagRepository;
         private readonly IWebHostEnvironment _environment;
 
 
 
-        public ProductService(ProductRepository productRepo, IWebHostEnvironment environment)
+        public ProductService(ProductRepository productRepo, IWebHostEnvironment environment, ProductCategoryService categoryService, TagService tagService, ProductTagRepository tagRepository)
         {
             _productRepo = productRepo;
             _environment = environment;
+            _categoryService = categoryService;
+            _tagService = tagService;
+            _tagRepository = tagRepository;
         }
 
         public async Task<Product> CreateAsync(ProductEntity entity)
         {
-            var _entity = await _productRepo.GetAsync(x => x.Id == entity.Id);
+            var _entity = await _productRepo.GetAsync(x => x.ArticleNumber == entity.ArticleNumber);
             if (_entity == null)
             {
                 _entity = await _productRepo.AddAsync(entity);
@@ -28,6 +36,57 @@ namespace WebApp.Helpers.Services
                     return _entity;
             }
             return null!;
+        }
+
+        /*
+                public async Task<Product> CreateAsync(ProductRegistrationViewModel viewModel)
+                {
+                    ProductEntity entity = viewModel;
+
+                    if (await _categoryService.GetCategoryAsync(entity.ProductCategoryId) != null) 
+                    { 
+                        entity = await _productRepo.AddAsync(entity);
+
+                    if (entity != null)
+                        {
+                        foreach(var tagName in viewModel.Tags)
+                            {
+                                var tag = await _tagService.GetTagAsync(tagName);
+                                tag ??=await _tagService.CreateTagAsync(tagName);
+
+                                await _tagRepository.AddAsync(new ProductTagEntity
+                                {
+                                    ArticleNumber = viewModel.ArticleNumber,
+                                    TagId = tag.Id,
+                                });
+                            }
+                        return await GetAsync(entity.ArticleNumber);
+                        } 
+
+
+                    }
+                    return null!;
+
+                }
+         */
+        public async Task<Product> GetAsync(string articlenumber)
+        {
+            var entity = await _productRepo.GetAsync(x => x.ArticleNumber== articlenumber);
+        if (entity != null)
+            {
+                Product product = entity;
+
+                if (entity.ProductTags.Count > 0)
+                {
+                    var tagList = new List<Tag>();
+
+                    foreach (var productTag in entity.ProductTags)
+                        tagList.Add(new Tag { Id = productTag.Tag.Id, TagName = productTag.Tag.TagName });
+                    product.Tags = tagList;
+                }
+                return product;
+            }
+         return null!; 
         }
 
         public async Task<bool> UploadImageAsync(Product product, IFormFile image)

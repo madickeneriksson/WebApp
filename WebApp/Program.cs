@@ -6,23 +6,36 @@ using WebApp.Helpers.Services;
 using WebApp.Models.Identity;
 using WebApp.Services;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Context
 builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Sql")));
 
 
-
+//Services
 builder.Services.AddScoped<ProductService>();
-builder.Services.AddScoped<ProductRepository>();
+builder.Services.AddScoped<TagService>();
+builder.Services.AddScoped<ProductCategoryService>();
 builder.Services.AddScoped<ContactFormService>();
-builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<AddressService>();
-builder.Services.AddScoped<UserAddressRepository>();
 builder.Services.AddScoped<AuthenticationService>();
 
-//Hantera lösenord/mejl´vid inloggning
+//Repo
+builder.Services.AddScoped<ProductRepository>();
+builder.Services.AddScoped<ProductCategoryRepository>();
+builder.Services.AddScoped<ProductTagRepository>();
+builder.Services.AddScoped<TagRepository>();
+
+builder.Services.AddScoped<ContactFormRepository>();
+builder.Services.AddScoped<AddressRepository>();
+builder.Services.AddScoped<UserAddressRepository>();
+
+
+//Hantera lösenord/mejl vid inloggning
 builder.Services.AddIdentity<AppUser, IdentityRole>(x =>
 {
     x.SignIn.RequireConfirmedAccount = false;

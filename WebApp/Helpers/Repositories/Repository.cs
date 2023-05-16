@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System.Linq.Expressions;
 using WebApp.Contexts;
 
 namespace WebApp.Helpers.Repositories
 {
+    
     public abstract class Repository<TEntity> where TEntity : class
     {
         private readonly IdentityContext _context;
@@ -13,6 +15,8 @@ namespace WebApp.Helpers.Repositories
             _context = context;
         }
 
+        //virtual = överskrivningsbar
+
         //Skapa
         public virtual async Task<TEntity> AddAsync(TEntity entity)
         {
@@ -21,32 +25,49 @@ namespace WebApp.Helpers.Repositories
             return entity;
         }
 
+        //Hämta 
         public virtual async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> expression)
         {
-            var entity = await _context.Set<TEntity>().FirstOrDefaultAsync(expression);
-            if (entity != null)
-                return entity;
-
-            return null!;
+            try
+            {
+                var item = await _context.Set<TEntity>().FirstOrDefaultAsync(expression);
+                return item!;
+            }
+            catch  { return null!; }
+            
         }
-        //Hämta
+        //Hämta 
         public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return await _context.Set<TEntity>().ToListAsync();
+            try
+            {
+                var items = await _context.Set<TEntity>().ToListAsync();
+                return items;
+            }
+            catch { return null!; }
         }
 
         //Hämta med filtrering
         public virtual async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> expression)
         {
-            return await _context.Set<TEntity>().Where(expression).ToListAsync();
+            try
+            {
+                var items = await _context.Set<TEntity>().Where(expression).ToListAsync();
+                return items;
+            } 
+            catch { return null!; }
         }
 
         //Uppdatera
         public virtual async Task<TEntity> UpdateAsync(TEntity entity)
         {
-            _context.Set<TEntity>().Update(entity);
-            await _context.SaveChangesAsync();
-            return entity;
+           try
+            {
+                _context.Set<TEntity>().Update(entity);
+                await _context.SaveChangesAsync();
+                return entity;
+            }
+            catch { return null!; }
         }
 
         // Ta bort
@@ -57,8 +78,9 @@ namespace WebApp.Helpers.Repositories
                 _context.Set<TEntity>().Remove(entity);
                 await _context.SaveChangesAsync();
                 return true;
-            } catch { };
-            return false;
+            } 
+            catch { return false; }
+            
         }
 
 
