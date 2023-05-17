@@ -1,5 +1,4 @@
 ﻿@model GridCollectionViewModel
-
 @{
     ViewData["Title"] = "Produkter";
   // var products = await productService.GetAllAsync();
@@ -24,10 +23,10 @@
                 </ul>
 
             }
-            @if (Model.GridItems != null)
+            @if (Model.Products != null)
             {
                 <div class="grid">
-                    @foreach (var item in Model.GridItems)
+                    @foreach (var item in Model.Products)
                     {
                         <partial name="/Views/Partials/_GridCollectionItem.cshtml" model="item" />
                     }

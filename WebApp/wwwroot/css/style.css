@@ -1316,7 +1316,7 @@ footer .container {
 }
 .admin-view .container {
   border: 0px solid #E1E1E1;
-  padding: 30px;
+  padding: 80px;
   align-items: center;
 }
 @media (min-width: 768px) {
@@ -1346,4 +1346,36 @@ footer .container {
 }
 .admin-view .container .admin-link .link:hover {
   color: #FA3150;
+}
+
+.show-customer {
+  padding: 20px 0 60px 0;
+}
+@media (min-width: 992px) {
+  .show-customer {
+    padding: 100px 0;
+  }
+}
+.show-customer .container {
+  border: 0px solid #E1E1E1;
+  padding: 50px;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .show-customer .container {
+    border: 1px solid #E1E1E1;
+    width: 70%;
+  }
+}
+.show-customer .container .title {
+  font-family: "Poppins", sans-serif;
+  color: #636363;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.show-customer .container .text {
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #636363;
 }

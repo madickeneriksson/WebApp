@@ -59,10 +59,16 @@ namespace WebApp.Controllers
             return View();
         }
 
-        public IActionResult ShowCustomer()
+        [HttpGet]
+        public async Task <IActionResult> ShowCustomer()
         {
-            return View();
+           var customer = await _auth.GetUsersAsync();
+            return View(customer);
         }
+
+        
+       
+
 
     }
 }

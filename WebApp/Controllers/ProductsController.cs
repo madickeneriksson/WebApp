@@ -13,12 +13,12 @@ public class ProductsController : Controller
         _productService = productService;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(ProductsViewModel viewModel)
     {
-        var viewModel = new ProductsViewModel
+         viewModel = new ProductsViewModel
         {
             Products = await _productService.GetAllAsync()
-    };
+         };
         return View(viewModel);
     }
 
