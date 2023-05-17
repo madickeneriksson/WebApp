@@ -12,18 +12,18 @@ namespace WebApp.Helpers.Services
         private readonly ProductRepository _productRepo;
         private readonly ProductCategoryService _categoryService;
         private readonly TagService _tagService;
-        private readonly ProductTagRepository _tagRepository;
+        private readonly ProductTagRepository _productTagRepository;
         private readonly IWebHostEnvironment _environment;
 
 
 
-        public ProductService(ProductRepository productRepo, IWebHostEnvironment environment, ProductCategoryService categoryService, TagService tagService, ProductTagRepository tagRepository)
+        public ProductService(ProductRepository productRepo, IWebHostEnvironment environment, ProductCategoryService categoryService, TagService tagService, ProductTagRepository productTagRepository)
         {
             _productRepo = productRepo;
             _environment = environment;
             _categoryService = categoryService;
             _tagService = tagService;
-            _tagRepository = tagRepository;
+            _productTagRepository = productTagRepository;
         }
 
         public async Task<Product> CreateAsync(ProductEntity entity)
@@ -37,6 +37,20 @@ namespace WebApp.Helpers.Services
             }
             return null!;
         }
+
+        public async Task AddProductTagsAsync(ProductEntity entity, string[] tags)
+        {
+            foreach(var tag in tags)
+            {
+                await _productTagRepository.AddAsync(new ProductTagEntity
+                {
+                    ArticleNumber = entity.ArticleNumber,
+                    TagId = int.Parse(tag)
+                });
+            }
+        }
+
+
 
         /*
                 public async Task<Product> CreateAsync(ProductRegistrationViewModel viewModel)
@@ -104,13 +118,15 @@ namespace WebApp.Helpers.Services
 
         public async Task<IEnumerable<Product>> GetAllAsync()
         {
-            var items = await _productRepo.GetAllAsync();
+            var products = await _productRepo.GetAllAsync();
             var list = new List<Product>();
-            foreach (var item in items)
-                list.Add(item);
+            foreach (var product in products)
+                list.Add(product);
 
             return list;
         }
+
     }
+
 }
 

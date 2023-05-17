@@ -53,15 +53,7 @@
                     </div>
                 }
             </div>
-             <div class="mb-3">
-                @foreach (SelectListItem category in ViewBag.Categorys)
-                {
-                        <div>
-                            <input type="checkbox" name="Categorys" id="category-@category.Text-@category.Value" value="@category.Value" checked="@category.Selected" class="form-check-input" />
-                            <label for="category-@category.Text-@category.Value" class="form-check-label">@category.Text</label>
-                        </div>
-                }
-            </div>
+
 
             <button type="submit" class="btn-theme">SKAPA PRODUKT</button>
         </form>

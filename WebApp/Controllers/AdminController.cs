@@ -29,7 +29,7 @@ namespace WebApp.Controllers
         public async Task <IActionResult> ProductRegister()
         {
             ViewBag.Tags = await _tagService.GetAllTagsAsync();
-            ViewBag.Categorys = await _categoryService.GetAllCategoryAsync();
+
             return View();
         }
 
@@ -41,6 +41,10 @@ namespace WebApp.Controllers
                 var product = await _productService.CreateAsync(productRegistrationViewModel);
                 if (product != null)
                 {
+                    await _productService.AddProductTagsAsync(productRegistrationViewModel,tags);
+
+
+
                     if (productRegistrationViewModel.Image!= null)
                       await _productService.UploadImageAsync(product, productRegistrationViewModel.Image);
                     return RedirectToAction("index", "admin");
@@ -51,7 +55,7 @@ namespace WebApp.Controllers
 
             }
             ViewBag.Tags = await _tagService.GetAllTagsAsync(tags);
-            ViewBag.Categorys = await _categoryService.GetAllCategoryAsync(categorys);
+
             return View();
         }
 

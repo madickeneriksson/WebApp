@@ -16,8 +16,8 @@ namespace WebApp.Models.Entities
         [Column(TypeName = "money")]
         public decimal Price { get; set; }
 
-        public int ProductCategoryId { get; set; }
-        public ProductCategoryEntity ProductCategory { get; set; } = null!;
+    //    public int ProductCategoryId { get; set; }
+     //   public ProductCategoryEntity ProductCategory { get; set; } = null!;
 
         public ICollection<ProductTagEntity> ProductTags { get; set; } = new HashSet<ProductTagEntity>();
 
@@ -31,7 +31,7 @@ namespace WebApp.Models.Entities
                 Rating = productEntity.Rating,
                 ImageUrl = productEntity.ImageUrl,
                 Price = productEntity.Price,
-                ProductCategory = productEntity.ProductCategory,
+    //            ProductCategory = productEntity.ProductCategory,
             };
         }
 

@@ -24,7 +24,7 @@ namespace WebApp.Contexts
 
         public DbSet<ProductTagEntity> ProductTags { get; set; }
 
-        public DbSet<ProductCategoryEntity> ProductCategories { get; set; }
+
 
 
     }

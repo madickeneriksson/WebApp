@@ -12,7 +12,7 @@ namespace WebApp.ViewModels
         public string? ImageUrl { get; set; }
         public decimal Price { get; set; }
 
-        public int ProductCategoryId { get; set; }
+  //      public int ProductCategoryId { get; set; }
         public List<string>? Tags { get; set; } = new List<string>();
 
         public static implicit operator ProductEntity(ProductViewModel viewModel)
@@ -27,7 +27,7 @@ namespace WebApp.ViewModels
                     Rating = viewModel.Rating,
                     ImageUrl = viewModel.ImageUrl,
                     Price = viewModel.Price,
-                    ProductCategoryId = viewModel.ProductCategoryId,
+              //      ProductCategoryId = viewModel.ProductCategoryId,
                 };
             }
             return null!;

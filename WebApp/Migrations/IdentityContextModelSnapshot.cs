@@ -212,23 +212,6 @@ namespace WebApp.Migrations
                     b.ToTable("ContactForm");
                 });
 
-            modelBuilder.Entity("WebApp.Models.Entities.ProductCategoryEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProductCategories");
-                });
-
             modelBuilder.Entity("WebApp.Models.Entities.ProductEntity", b =>
                 {
                     b.Property<string>("ArticleNumber")
@@ -247,15 +230,10 @@ namespace WebApp.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
 
-                    b.Property<int>("ProductCategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Rating")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ArticleNumber");
-
-                    b.HasIndex("ProductCategoryId");
 
                     b.ToTable("Products");
                 });
@@ -445,17 +423,6 @@ namespace WebApp.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WebApp.Models.Entities.ProductEntity", b =>
-                {
-                    b.HasOne("WebApp.Models.Entities.ProductCategoryEntity", "ProductCategory")
-                        .WithMany("Products")
-                        .HasForeignKey("ProductCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ProductCategory");
-                });
-
             modelBuilder.Entity("WebApp.Models.Entities.ProductTagEntity", b =>
                 {
                     b.HasOne("WebApp.Models.Entities.ProductEntity", "Product")
@@ -501,11 +468,6 @@ namespace WebApp.Migrations
             modelBuilder.Entity("WebApp.Models.Entities.AddressEntity", b =>
                 {
                     b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("WebApp.Models.Entities.ProductCategoryEntity", b =>
-                {
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("WebApp.Models.Entities.ProductEntity", b =>

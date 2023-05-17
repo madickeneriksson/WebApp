@@ -13,7 +13,7 @@ namespace WebApp.Models.Schemas
         public string? ImageUrl { get; set; }
         public decimal Price { get; set; }
 
-        public int ProductCategoryId { get; set; }
+   //     public int ProductCategoryId { get; set; }
         public List<string>? Tags { get; set; } = new List<string>();
 
         public static implicit operator ProductEntity(ProductSchema schema)
@@ -28,7 +28,7 @@ namespace WebApp.Models.Schemas
                     Rating = schema.Rating,
                     ImageUrl = schema.ImageUrl,
                     Price = schema.Price,
-                    ProductCategoryId = schema.ProductCategoryId,
+                    //ProductCategoryId = schema.ProductCategoryId,
                 };
             }
             return null!;

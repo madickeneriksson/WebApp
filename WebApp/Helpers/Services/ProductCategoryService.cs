@@ -15,7 +15,7 @@ namespace WebApp.Helpers.Services
         {
             _productRepo = productRepo;
         }
-
+/*
         public async Task<ProductCategory> CreateCategoryAsync(string categoryName)
         {
             var entity = new ProductCategoryEntity { CategoryName = categoryName };
@@ -86,5 +86,6 @@ namespace WebApp.Helpers.Services
                 list.Add(category);
             return list;
         }
+*/
     }
 }

@@ -16,7 +16,7 @@ namespace WebApp.Helpers.Repositories
         public override async Task<ProductEntity> GetAsync(Expression<Func<ProductEntity, bool>> expression)
         {
             var entity = await _context.Products
-                .Include(x => x.ProductCategory)
+             //   .Include(x => x.ProductCategory)
                 .Include(x => x.ProductTags)
                 .ThenInclude(x => x.Tag)
                 .FirstOrDefaultAsync(expression);
