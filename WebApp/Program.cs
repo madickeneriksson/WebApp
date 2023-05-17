@@ -35,7 +35,9 @@ builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<UserAddressRepository>();
 
 
+
 //Hantera lösenord/mejl vid inloggning
+builder.Services.AddScoped<RoleManager<IdentityRole>>();
 builder.Services.AddIdentity<AppUser, IdentityRole>(x =>
 {
     x.SignIn.RequireConfirmedAccount = false;

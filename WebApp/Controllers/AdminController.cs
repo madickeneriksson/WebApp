@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Helpers.Services;
+using WebApp.Models.dtos;
+using WebApp.Models.Identity;
 using WebApp.Services;
 using WebApp.ViewModels;
 
@@ -20,6 +23,7 @@ namespace WebApp.Controllers
             _auth = auth;
             _tagService = tagService;
             _categoryService = categoryService;
+
         }
 
         public IActionResult Index()
@@ -62,7 +66,8 @@ namespace WebApp.Controllers
         [HttpGet]
         public async Task <IActionResult> ShowCustomer()
         {
-           var customer = await _auth.GetUsersAsync();
+            var customer = await _auth.GetUsersAsync();
+
             return View(customer);
         }
 

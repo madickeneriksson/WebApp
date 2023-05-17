@@ -1,9 +1,19 @@
 ﻿@model List<WebApp.Models.Identity.AppUser>
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<AppUser> _userManager
 
 <section class="show-customer">
     <div class="container">
         <div class="title">Visa alla användare</div>
-@foreach (var user in Model)
-{ <div class="text""">@user.FirstName @user.LastName</div>}
+        @foreach (var user in Model)
+        {
+                <div class="text">@user.FirstName @user.LastName</div>
+        <ul>
+                @foreach (var role in await _userManager.GetRolesAsync(user))
+                {
+                    <li>@role</li>
+                }
+        </ul>
+        }
     </div>
     </section>>
