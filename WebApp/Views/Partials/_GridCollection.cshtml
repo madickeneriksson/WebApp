@@ -1,7 +1,7 @@
 ﻿@model GridCollectionViewModel
+
 @{
     ViewData["Title"] = "Produkter";
-  // var products = await productService.GetAllAsync();
 }
 
 @if (Model != null)
@@ -12,7 +12,7 @@
             {
                 <h1 class="title">@Model.Title</h1>
             }
-            
+
             @if (Model.Categories != null)
             {
                 <ul class="categories">
@@ -21,14 +21,14 @@
                         <li class="category-item">@category</li>
                     }
                 </ul>
-
             }
+
             @if (Model.Products != null)
             {
                 <div class="grid">
-                    @foreach (var item in Model.Products)
+                    @foreach (var productViewModel in Model.Products)
                     {
-                        <partial name="/Views/Partials/_GridCollectionItem.cshtml" model="item" />
+                        <partial name="/Views/Partials/_GridCollectionItem.cshtml" model="productViewModel" />
                     }
                 </div>
             }
@@ -39,7 +39,6 @@
                     <button class="btn-outline-white">LOAD MORE <i class="fa-solid fa-rotate-right"></i></button>
                 </div>
             }
-
         </div>
     </section>
 }

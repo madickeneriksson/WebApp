@@ -1,36 +1,41 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApp.Helpers.Repositories;
 using WebApp.Helpers.Services;
 using WebApp.ViewModels;
+using System.Linq;
+using WebApp.Models.Entities;
 
 namespace WebApp.Controllers;
 
 public class HomeController : Controller
 {
-    public IActionResult Index()
-    {
+    private readonly ProductRepository _productRepository;
 
+    public HomeController(ProductRepository productRepository)
+    {
+        _productRepository = productRepository;
+    }
+
+    public async Task<IActionResult> Index()
+    {
         var viewModel = new HomeIndexViewModel
         {
-            BestCollection = new GridCollectionViewModel
+            New = new GridCollectionViewModel
             {
-                Title = "Best Collection",
+                Title = "New",
                 Categories = new List<string> { "All", "Bag", "Dress", "Decoration", "Essentials", "Interior", "Laptops", "Mobile", "Beauty" },
-
+                Products = await _productRepository.GetProductsByTagAsync("New")
             },
-            UpToSell = new GridCollectionViewModel
+            Featured = new GridCollectionViewModel
             {
-
-
+                Title = "Featured",
+                Products = await _productRepository.GetProductsByTagAsync("Featured")
             },
-
-
-            TopSelling = new GridCollectionViewModel
+            Popular = new GridCollectionViewModel
             {
-                Title = "Top selling products in this week",
-
+                Title = "Popular",
+                Products = await _productRepository.GetProductsByTagAsync("Popular")
             }
-
-
         };
 
         return View(viewModel);
