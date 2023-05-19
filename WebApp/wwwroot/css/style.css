@@ -1353,7 +1353,7 @@ footer .container {
 }
 @media (min-width: 992px) {
   .show-customer {
-    padding: 100px 0;
+    padding: 150px 0;
   }
 }
 .show-customer .container {
@@ -1373,9 +1373,49 @@ footer .container {
   font-size: 30px;
   margin-bottom: 20px;
 }
+.show-customer .container .content {
+  display: flex;
+  flex-direction: column;
+}
+.show-customer .container .user-row {
+  border: 1px solid #E1E1E1;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+.show-customer .container .role {
+  color: #FA3150;
+}
 .show-customer .container .text {
-  font-size: 20px;
+  margin-right: 10px;
   font-family: "Poppins", sans-serif;
-  font-weight: 400;
+  font-size: 16px;
   color: #636363;
+}
+.show-customer .container .text-smal {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: #636363;
+}
+.show-customer .container .btn-theme {
+  margin-left: 50px;
+}
+.show-customer .container .role-form {
+  margin: 5px;
+  display: flex;
+  align-items: center;
+}
+.show-customer .container .role-form select {
+  margin-right: 10px;
+  padding: 5px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+}
+.show-customer .container .role-form button {
+  padding: 5px 15px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
 }

@@ -45,7 +45,7 @@ public class ProductRegistrationViewModel
             Price = productRegistrationViewModel.Price,
         };
         if (productRegistrationViewModel.Image != null)
-            entity.ImageUrl = $"{productRegistrationViewModel.ArticleNumber}_{productRegistrationViewModel.Image?.FileName}";
+            entity.ImageUrl = $"{Guid.NewGuid()}_{productRegistrationViewModel.Image?.FileName}";
         return entity;
     }
 }

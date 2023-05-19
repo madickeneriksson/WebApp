@@ -16,14 +16,16 @@ namespace WebApp.Controllers
         private readonly AuthenticationService _auth;
         private readonly TagService _tagService;
         private readonly ProductCategoryService _categoryService;
+        private readonly UserManager<AppUser> _userManager;
 
-        public AdminController(ProductService productService, AuthenticationService auth, TagService tagService, ProductCategoryService categoryService)
+
+        public AdminController(ProductService productService, AuthenticationService auth, TagService tagService, ProductCategoryService categoryService, UserManager<AppUser> userManager)
         {
             _productService = productService;
             _auth = auth;
             _tagService = tagService;
             _categoryService = categoryService;
-
+            _userManager = userManager;
         }
 
         public IActionResult Index()
@@ -71,9 +73,39 @@ namespace WebApp.Controllers
             return View(customer);
         }
 
-        
-       
+        public async Task <IActionResult> RegisterUser()
+        {
+            return View();
+        }
 
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterUser(RegisterViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                if (await _auth.UserAlreadyExistsAsync(x => x.Email == viewModel.Email))
+                    ModelState.AddModelError("", "Ett konto med samma email finns redan");
+
+                if (await _auth.RegisterUserAsync(viewModel))
+                    return RedirectToAction("index", "admin");
+            }
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangeRole(string userId, string role)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                var currentRoles = await _userManager.GetRolesAsync(user);
+                await _userManager.RemoveFromRolesAsync(user, currentRoles);
+                await _userManager.AddToRoleAsync(user, role);
+            }
+
+            return RedirectToAction("ShowCustomer"); 
+        }
 
     }
 }

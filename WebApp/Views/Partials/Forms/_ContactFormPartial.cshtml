@@ -43,3 +43,48 @@
         </form>
     </div>
 </section>
+
+<script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', validateForm);
+
+    function validateForm(event) {
+        event.preventDefault();
+
+        const inputs = document.querySelectorAll('input');
+
+        resetValidation();
+
+        let isValid = true;
+
+        inputs.forEach(input => {
+            const errorElement = input.nextElementSibling;
+            const inputValue = input.value.trim();
+
+            if (inputValue === '') {
+                showError(input, errorElement, 'Fältet får inte vara tomt.');
+                isValid = false;
+            }
+        });
+        if (isValid) {
+            form.submit();
+        }
+    }
+
+    function showError(input, errorElement, errorMessage) {
+        input.classList.add('error');
+        errorElement.textContent = errorMessage;
+        errorElement.style.display = 'block';
+    }
+
+    function resetValidation() {
+        const errorElements = document.querySelectorAll('.error');
+
+        errorElements.forEach(errorElement => {
+            const input = errorElement.previousElementSibling;
+            input.classList.remove('error');
+            errorElement.textContent = '';
+            errorElement.style.display = 'none';
+        });
+    }
+</script>

@@ -2,7 +2,7 @@
     padding: 20px 0 60px 0;
 
     @include lg {
-        padding: 100px 0;
+        padding: 150px 0;
     }
 
     .container {
@@ -20,15 +20,61 @@
             color: $color-dark-3;
             font-size: 30px;
             margin-bottom: 20px;
-            
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-row {
+            border: 1px solid $color-dark-5;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+        }
+
+        .role {
+            color: $color-theme-1;
         }
 
         .text {
-            font-size: 20px;
+            margin-right: 10px;
             font-family: $font-poppins;
-            font-weight: $font-weight-regular;
+            font-size: 16px;
             color: $color-dark-3;
-          
+        }
+
+        .text-smal {
+            font-family: $font-poppins;
+            font-size: 15px;
+            color: $color-dark-3;
+        }
+
+        .btn-theme {
+            margin-left: 50px;
+        }
+
+        .role-form {
+            margin: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .role-form select {
+            margin-right: 10px;
+            padding: 5px;
+            font-family: $font-poppins;
+            font-size: 16px;
+        }
+
+        .role-form button {
+            padding: 5px 15px;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: $font-poppins;
+            font-size: 16px;
         }
     }
 }

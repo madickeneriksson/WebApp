@@ -4,16 +4,22 @@
 
 <section class="show-customer">
     <div class="container">
-        <div class="title">Visa alla användare</div>
-        @foreach (var user in Model)
-        {
-                <div class="text">@user.FirstName @user.LastName</div>
-        <ul>
-                @foreach (var role in await _userManager.GetRolesAsync(user))
-                {
-                    <li>@role</li>
-                }
-        </ul>
-        }
+        <div class="title">Registrerade användare</div>
+        <div class="content">
+            @foreach (var user in Model)
+            {
+                <div class="user-row">
+                    <div class="text">@user.FirstName @user.LastName <div class="text-smal">Nuvarande roll:</div> <div class="role">@foreach (var role in await _userManager.GetRolesAsync(user)){ @role }</div></div>
+                    <button class="btn-theme">Ändra roll</button>
+                    <form class="role-form" method="post" action="/admin/changeRole">
+                    <select name="role">
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                     </select>
+                     <input type="hidden" name="userId" value="@user.Id" />
+                    </form>
+                </div>
+            }
+        </div>
     </div>
-    </section>>
+</section>

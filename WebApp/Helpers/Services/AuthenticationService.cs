@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using System.Security.Claims;
 using WebApp.Helpers.Services;
 using WebApp.Models.dto;
 using WebApp.Models.Identity;
@@ -59,6 +60,42 @@ namespace WebApp.Services
             }
             return false;
         }
+
+    
+/*
+    public async Task<bool> RegisterByAdminUserAsync(RegisterUserByAdminViewModel viewModel)
+        {
+            var currentUser = await _userManager.GetUserAsync(_signInManager.Context.User);
+            if (currentUser != null && await _userManager.IsInRoleAsync(currentUser, "admin"))
+            {
+                var appUser = viewModel;
+                var roleName = "user";
+
+                if (!await _roleManager.Roles.AnyAsync())
+                {
+                    await _roleManager.CreateAsync(new IdentityRole("admin"));
+                    await _roleManager.CreateAsync(new IdentityRole("user"));
+                }
+
+                if (!await _userManager.Users.AnyAsync())
+                    roleName = "admin";
+
+                var result = await _userManager.CreateAsync(appUser, viewModel.Password);
+                if (result.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(appUser, roleName);
+                    //Registrera adress
+                    var addressEntity = await _addressService.GetOrCreateAsync(viewModel);
+                    if (addressEntity != null)
+                    {
+                        await _addressService.AddAddressAsync(appUser, addressEntity);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+*/
 
         // Hämta användare
         public async Task<List<AppUser>> GetUsersAsync()
