@@ -25,8 +25,10 @@
             }
 
             .image {
-                width: 100%;
-                height: auto;
+                img {
+                    width: 356px;
+                    height: 469px;
+                }
             }
         }
     }

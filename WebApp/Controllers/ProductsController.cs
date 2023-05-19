@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Dynamic;
 using WebApp.Helpers.Services;
+using WebApp.Models.dto;
 using WebApp.ViewModels;
 
 namespace WebApp.Controllers;
@@ -25,21 +27,24 @@ public class ProductsController : Controller
     }
 
     [HttpGet("/products/details/{articleNumber}")]
-    public async Task <IActionResult> Details(string articlenumber)
-    
+    public async Task<IActionResult> Details(string articlenumber)
+
+    {
+        var product = await _productService.GetAsync(articlenumber);
+
+        if (product == null)
         {
-            var product = await _productService.GetAsync(articlenumber);
-
-            if (product == null)
-            {
-                return NotFound(); // Hantera om produkten inte hittas
-            }
-
-            return View(product);
+            return NotFound(); // Hantera om produkten inte hittas
         }
-    
 
-    public IActionResult Search()
+        return View(product);
+    }
+
+
+
+
+
+        public IActionResult Search()
     {
         ViewData["Title"] = "Search for products";
         return View();

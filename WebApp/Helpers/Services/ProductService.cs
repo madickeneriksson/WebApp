@@ -128,6 +128,14 @@ namespace WebApp.Helpers.Services
             return list;
         }
 
+        public async Task<IEnumerable<Product>> GetRandomProductsAsync(int count)
+        {
+            var allProducts = await GetAllAsync();
+            var randomProducts = allProducts.OrderBy(x => Guid.NewGuid()).Take(count);
+
+            return randomProducts;
+        }
+
     }
 
 }

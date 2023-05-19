@@ -764,7 +764,7 @@ footer .container {
 .top-selling {
   padding: 40px 20px;
 }
-.top-selling .collection-title {
+.top-selling .title {
   text-align: center;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
@@ -1078,7 +1078,7 @@ footer .container {
 }
 
 .product-details {
-  margin-top: 500px;
+  margin-top: 50px;
 }
 .product-details .container .details {
   display: flex;
@@ -1176,9 +1176,9 @@ footer .container {
   font-size: 16px;
   line-height: 1.2;
 }
-.product-info .container .product-info .image {
-  width: 100%;
-  height: auto;
+.product-info .container .product-info .image img {
+  width: 356px;
+  height: 469px;
 }
 
 .related-products .container .section-title {
@@ -1198,8 +1198,10 @@ footer .container {
 }
 .related-products .container .related-products-item .item-group .image {
   display: block;
-  width: 100%;
-  height: auto;
+}
+.related-products .container .related-products-item .item-group .image img {
+  width: 270px;
+  height: 295px;
 }
 .related-products .container .related-products-item .item-group .body {
   display: block;
@@ -1428,8 +1430,8 @@ footer .container {
   display: block;
 }
 .collection-content-item img {
-  width: 310px;
-  height: 369px;
+  width: 369px;
+  height: 310px;
 }
 .collection-content-item .body {
   color: #292929;
@@ -1476,4 +1478,52 @@ footer .container {
   .collection-content-item:hover .add-cart {
     display: block;
   }
+}
+
+.product-breadcrumb {
+  height: 200px;
+  background-color: #E1E1E1;
+}
+@media (min-width: 768px) {
+  .product-breadcrumb {
+    height: 300px;
+  }
+}
+.product-breadcrumb .container {
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-breadcrumb h1 {
+  font-size: 30px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: #292929;
+}
+.product-breadcrumb ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+}
+.product-breadcrumb ul li {
+  padding: 0;
+  margin: 0 10px 0 0;
+}
+
+.product-view {
+  padding-top: 100px;
+}
+.product-view .title {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 25px;
+  color: #292929;
 }
