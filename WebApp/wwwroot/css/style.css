@@ -117,8 +117,8 @@ html, body {
   display: block;
 }
 .collection-item img {
-  width: 100%;
-  height: auto;
+  width: 270px;
+  height: 295px;
 }
 .collection-item .body {
   color: #292929;
@@ -1086,14 +1086,18 @@ footer .container {
 }
 .product-details .container .details .product-image {
   display: block;
-  width: 100%;
-  height: auto;
+}
+.product-details .container .details .product-image img {
+  width: 430px;
+  height: 501px;
 }
 .product-details .container .details .details-image {
   padding-top: 20px;
   display: block;
-  width: 100%;
-  height: auto;
+}
+.product-details .container .details .details-image img {
+  width: 113px;
+  height: 120px;
 }
 .product-details .container .details .content {
   padding: 20px;
@@ -1333,9 +1337,7 @@ footer .container {
   text-align: center;
 }
 .admin-view .container .admin-link {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  text-align: center;
 }
 .admin-view .container .admin-link .link {
   font-family: "Poppins", sans-serif;
@@ -1418,4 +1420,60 @@ footer .container {
   border-radius: 10px;
   font-family: "Poppins", sans-serif;
   font-size: 16px;
+}
+
+.collection-content-item {
+  background-color: #FFFFFF;
+  text-decoration: none;
+  display: block;
+}
+.collection-content-item img {
+  width: 310px;
+  height: 369px;
+}
+.collection-content-item .body {
+  color: #292929;
+  font-family: "Poppins", sans-serif;
+  padding: 10px;
+}
+.collection-content-item .body .title {
+  grid-area: title;
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+.collection-content-item .body .info {
+  font-family: "Poppins", sans-serif;
+  padding: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+}
+.collection-content-item .body .info .price {
+  grid-area: price;
+  font-size: 16px;
+  align-items: center;
+}
+.collection-content-item .body .info .add-cart {
+  grid-area: cart;
+  text-align: right;
+  align-items: center;
+  padding: 2px;
+  font-size: 24px;
+  color: #292929;
+}
+.collection-content-item .body .info .add-cart:hover {
+  color: #AEAEAE;
+}
+.collection-content-item:hover {
+  text-decoration: none;
+}
+@media (min-width: 1200px) {
+  .collection-content-item .add-cart {
+    display: none;
+  }
+  .collection-content-item:hover .add-cart {
+    display: block;
+  }
 }

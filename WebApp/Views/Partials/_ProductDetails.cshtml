@@ -1,20 +1,22 @@
-﻿﻿<section class="product-details">
+﻿@model WebApp.Models.dto.Product
+
+﻿<section class="product-details">
     <div class="container">
         <div class="details">
             <div class="product-image">
-                <img src="images/placeholders/501x430.svg" alt="">
+                <img src="~/images/placeholders/@Model.ImageUrl" alt="@Model.Name">
 
                 <div class="details-image">
-                    <img src="images/placeholders/120x113.svg" alt="">
-                    <img src="images/placeholders/120x113.svg" alt="">
-                    <img src="images/placeholders/120x113.svg" alt="">
-                    <img src="images/placeholders/120x113.svg" alt="">
+                    <img src="~/images/placeholders/@Model.ImageUrl" alt="@Model.Name">
+                    <img src="~/images/placeholders/@Model.ImageUrl" alt="@Model.Name">
+                    <img src="~/images/placeholders/@Model.ImageUrl" alt="@Model.Name">
+                    <img src="~/images/placeholders/@Model.ImageUrl" alt="@Model.Name">
                 </div>
             </div>
 
             <div class="content">
                 <div class="title">Young Star Smart Shoe in Fashion</div>
-                <div class="small-description">Lirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet</div>
+                <div class="small-description">@Model.Description</div>
                 <div class="rating">
                     <i class="fa-solid fa-star" style="color: #fff824;"></i>
                     <i class="fa-solid fa-star" style="color: #fff824;"></i>
@@ -23,7 +25,7 @@
                     <i class="fa-solid fa-star" style="color: #fff824;"></i>
                     <div class="reviews">16</div>
                 </div>
-                <div class="price">30</div>
+                <div class="price">@Model.Price</div>
 
                 <div class="add-to-cart">
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
@@ -40,7 +42,7 @@
                 </div>
 
                 <button class="btn-outline-white">Add To Wishlist</button>
-                <div class="category">Category</div>
+                <div class="category">@Model.Tags</div>
             </div>
         </div>
     </div>

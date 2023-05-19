@@ -24,12 +24,11 @@
         }
 
         .admin-link {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
 
 
             .link {
+
                 font-family: $font-poppins;
                 color: $color-dark-3;
                 text-decoration: none;

@@ -10,15 +10,22 @@
 
             .product-image {
                 display: block;
-                width: 100%;
-                height: auto;
+
+                img {
+                    width: 430px;
+                    height: 501px;
+                }
             }
 
             .details-image {
                 padding-top: 20px;
                 display: block;
-                width: 100%;
-                height: auto;
+
+
+                img {
+                    width: 113px;
+                    height: 120px;
+                }
             }
 
             .content {

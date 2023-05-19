@@ -1,5 +1,4 @@
 ﻿@model GridCollectionViewModel
-
 @{
     ViewData["Title"] = "Produkter";
     var products = await productService.GetAllAsync();
@@ -8,21 +7,17 @@
     <div class="container">
         <div class="collection-grid">
             <div class="item-1">
-                <!-- collection-item start -->
-                <a href="#" class="collection-item">
-                    <img src="images/placeholders/369x310.svg" alt="">
-                    <div class="body">
-                        <div class="title">Apple watch collection</div>
-                        <div class="info">
-                            <div class="price">$30.00</div>
-                            <i class="add-cart fa-regular fa-cart-plus"></i>
-                        </div>
+                @if (Model.Products != null)
+                {
+                    <div class="grid">
+                        @foreach (var productViewModel in Model.Products.Take(1))
+                        {
+                        <partial name="/Views/Partials/_CollectionContentItem.cshtml" model="productViewModel" />
+                        }
                     </div>
-                </a>
-                <!-- collection-item end -->
+                }
             </div>
             <div class="discover">
-                <!-- collection-content start -->
                 <div class="collection-content">
                     <div class="container">
                         <div class="title-red">UP TO SELL</div>
@@ -32,23 +27,18 @@
                         <a href="#" class="link">Discover More</a>
                     </div>
                 </div>
-                <!-- collection-content end -->
             </div>
             <div class="item-2">
-                <!-- collection-item start -->
-                <a href="#" class="collection-item">
-                    <img src="images/placeholders/369x310.svg" alt="">
-                    <div class="body">
-                        <div class="title">Apple watch collection</div>
-                        <div class="info">
-                            <div class="price">$30.00</div>
-                            <i class="add-cart fa-regular fa-cart-plus"></i>
-                        </div>
+                @if (Model.Products != null)
+                {
+                    <div class="grid">
+                        @foreach (var productViewModel in Model.Products.Skip(1).Take(1))
+                        {
+                        <partial name="/Views/Partials/_CollectionContentItem.cshtml" model="productViewModel" />
+                        }
                     </div>
-                </a>
-                <!-- collection-item end -->
+                }
             </div>
         </div>
     </div>
 </section>
-

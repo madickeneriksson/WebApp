@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApp.Helpers.Services;
 using WebApp.ViewModels;
 
@@ -23,11 +24,20 @@ public class ProductsController : Controller
         return View(viewModel);
     }
 
-    public IActionResult Details()
-    {
-        ViewData["Title"] = "Search for products";
-        return View();
-    }
+    [HttpGet("/products/details/{articleNumber}")]
+    public async Task <IActionResult> Details(string articlenumber)
+    
+        {
+            var product = await _productService.GetAsync(articlenumber);
+
+            if (product == null)
+            {
+                return NotFound(); // Hantera om produkten inte hittas
+            }
+
+            return View(product);
+        }
+    
 
     public IActionResult Search()
     {

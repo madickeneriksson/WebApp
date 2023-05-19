@@ -1,11 +1,11 @@
-.collection-item {
+﻿.collection-content-item {
     background-color: $color-white;
     text-decoration: none;
     display: block;
 
     img {
-        width: 270px;
-        height: 295px;
+        width: 310px;
+        height: 369px;
     }
 
     .body {
@@ -41,14 +41,12 @@
                 padding: 2px;
                 font-size: 24px;
                 color: $color-dark-2;
-    
+
                 &:hover {
                     color: $color-dark-4;
                 }
             }
         }
-
-
     }
 
     &:hover {
