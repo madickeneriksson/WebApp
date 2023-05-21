@@ -19,7 +19,6 @@ builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Confi
 //Services
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<TagService>();
-builder.Services.AddScoped<ProductCategoryService>();
 builder.Services.AddScoped<ContactFormService>();
 builder.Services.AddScoped<AddressService>();
 builder.Services.AddScoped<AuthenticationService>();

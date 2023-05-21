@@ -15,16 +15,14 @@ namespace WebApp.Controllers
         private readonly ProductService _productService;
         private readonly AuthenticationService _auth;
         private readonly TagService _tagService;
-        private readonly ProductCategoryService _categoryService;
         private readonly UserManager<AppUser> _userManager;
 
 
-        public AdminController(ProductService productService, AuthenticationService auth, TagService tagService, ProductCategoryService categoryService, UserManager<AppUser> userManager)
+        public AdminController(ProductService productService, AuthenticationService auth, TagService tagService, UserManager<AppUser> userManager)
         {
             _productService = productService;
             _auth = auth;
             _tagService = tagService;
-            _categoryService = categoryService;
             _userManager = userManager;
         }
 
@@ -73,7 +71,7 @@ namespace WebApp.Controllers
             return View(customer);
         }
 
-        public async Task <IActionResult> RegisterUser()
+        public IActionResult RegisterUser()
         {
             return View();
         }

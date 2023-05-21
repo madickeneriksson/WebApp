@@ -10,18 +10,16 @@ namespace WebApp.Helpers.Services
     public class ProductService
     {
         private readonly ProductRepository _productRepo;
-        private readonly ProductCategoryService _categoryService;
         private readonly TagService _tagService;
         private readonly ProductTagRepository _productTagRepository;
         private readonly IWebHostEnvironment _environment;
 
 
 
-        public ProductService(ProductRepository productRepo, IWebHostEnvironment environment, ProductCategoryService categoryService, TagService tagService, ProductTagRepository productTagRepository)
+        public ProductService(ProductRepository productRepo, IWebHostEnvironment environment,TagService tagService, ProductTagRepository productTagRepository)
         {
             _productRepo = productRepo;
             _environment = environment;
-            _categoryService = categoryService;
             _tagService = tagService;
             _productTagRepository = productTagRepository;
         }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using WebApp.Models.dtos;
 using WebApp.ViewModels;
 
 namespace WebApp.Models.Entities
@@ -12,9 +13,9 @@ namespace WebApp.Models.Entities
         public string? Company { get; set; }
         public string Message { get; set; } = null!;
 
-        public static implicit operator ContactFormModel(ContactFormEntity contactFormEntity)
+        public static implicit operator ContactForm (ContactFormEntity contactFormEntity)
         {
-            return new ContactFormModel
+            return new ContactForm
             {
                 Id = contactFormEntity.Id,
                 Name = contactFormEntity.Name,
