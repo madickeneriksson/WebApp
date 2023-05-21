@@ -22,7 +22,7 @@ public class ProductRegistrationViewModel
 
 
     [Required(ErrorMessage = "Du måste ange ett produktpris")]
-    [Display(Name = "Produktpris *")]
+    [Display(Name = "Produktpris ")]
     [DataType(DataType.Currency)]
     public decimal Price { get; set; }
 
@@ -30,8 +30,6 @@ public class ProductRegistrationViewModel
     [DataType(DataType.Upload)]
     public IFormFile? Image { get; set; }
 
-  //  public int ProductCategoryId { get; set; }
-   // public List<string>? Tags { get; set; } = new List<string>();
 
     public static implicit operator ProductEntity(ProductRegistrationViewModel productRegistrationViewModel)
     {
@@ -40,8 +38,6 @@ public class ProductRegistrationViewModel
             ArticleNumber= productRegistrationViewModel.ArticleNumber,
             Name = productRegistrationViewModel.Name,
             Description = productRegistrationViewModel.Description,
-            Rating= productRegistrationViewModel.Rating,
-          //  ProductCategoryId = productRegistrationViewModel.ProductCategoryId,
             Price = productRegistrationViewModel.Price,
         };
         if (productRegistrationViewModel.Image != null)

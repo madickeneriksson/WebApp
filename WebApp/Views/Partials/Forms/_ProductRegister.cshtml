@@ -1,7 +1,10 @@
 ﻿@model ProductRegistrationViewModel
 @{
-    ViewData["Title"] = "Create a new product:";
+    ViewData["Title"] = "Skapa ny produkt:";
 }
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 
 <section class="productregister-form">
     <div class="container">
@@ -31,12 +34,6 @@
                 <textarea asp-for="Description" class="form-control" rows="4"></textarea>
                 <span asp-validation-for="Description" class="error"></span>
             </div>
-                <div class="rating form-group">
-                <label asp-for="Rating" class="form-label"></label>
-                <input asp-for="Rating" class="form-control">
-                <span asp-validation-for="Rating" class="error"></span>
-            </div>
-   
 
             <div class="image form-group">
                 <label asp-for="Image" class="form-label"></label>
@@ -59,3 +56,5 @@
         </form>
     </div>
 </section>
+
+<script src="/js/site.js"></script>

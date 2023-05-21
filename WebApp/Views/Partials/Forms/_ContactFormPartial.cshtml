@@ -1,14 +1,15 @@
 ﻿@model ContactformViewModel
 @{
-    ViewData["Title"] = "kontaktformulär";
+    ViewData["Title"] = "Kontakta oss";
 }
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 
 <section class="contact-form">
     <div class="container">
-        <div class="title">Write something</div>
+        <div class="title">@ViewData["Title"] </div>
         <div asp-validation-summary="ModelOnly" class="form-group error"></div>
         <form asp-action="index" method="post" novalidate>
             <div class="form-group">
