@@ -32,6 +32,47 @@ function toggleMenu(attribute) {
 
 }
 
+$(document).ready(function () {
+    $('form').validate({
+        rules: {
+            Name: {
+                required: true
+            },
+            Email: {
+                required: true,
+                email: true
+            },
+            PhoneNumber: {
+                required: false
+            },
+            Company: {
+                required: false
+            },
+            Message: {
+                required: true,
+                minlength: 5
+            }
+        },
+        messages: {
+            Name: {
+                required: 'Vänligen ange ditt namn.'
+            },
+            Email: {
+                required: 'Vänligen ange din e-postadress.',
+                email: 'Vänligen ange en giltig e-postadress.'
+            },
+            Message: {
+                required: 'Vänligen ange ett meddelande.',
+                minlength: 'Meddelandet måste vara minst 5 tecken långt.'
+            }
+        },
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+});
+
+
 
 toggleMenu('[data-option="toggle"]')
 

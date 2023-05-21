@@ -899,6 +899,17 @@ footer .container {
     grid-template-areas: "name email" "phoneNumber companyName" "message message" "terms terms" "button button";
   }
 }
+.contact-form form form .error {
+  color: red;
+}
+.contact-form form form .field-validation-error {
+  color: red;
+}
+.contact-form form form .error input,
+.contact-form form form .error select,
+.contact-form form form .error textarea {
+  border: 1px solid red;
+}
 .contact-form form .name {
   grid-area: name;
 }

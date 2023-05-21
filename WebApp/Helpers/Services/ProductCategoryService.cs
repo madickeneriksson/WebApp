@@ -2,7 +2,7 @@
 using WebApp.Helpers.Repositories;
 using WebApp.Models.dtos;
 using WebApp.Models.Entities;
-using WebApp.Models.Schemas;
+
 using WebApp.ViewModels;
 
 namespace WebApp.Helpers.Services

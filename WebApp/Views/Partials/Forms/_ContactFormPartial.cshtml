@@ -2,19 +2,23 @@
 @{
     ViewData["Title"] = "kontaktformulär";
 }
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+
 <section class="contact-form">
     <div class="container">
         <div class="title">Write something</div>
-          <div asp-validation-summary="ModelOnly" class="form-group error"></div>
+        <div asp-validation-summary="ModelOnly" class="form-group error"></div>
         <form asp-action="index" method="post" novalidate>
             <div class="form-group">
                 <label asp-for="Name" class="form-label"></label>
-                <input asp-for="Name" class="form-control">
+                <input asp-for="Name" class="form-control" required>
                 <span asp-validation-for="Name" class="error"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="form-label"></label>
-                <input asp-for="Email" class="form-control">
+                <input asp-for="Email" class="form-control" required >
                 <span asp-validation-for="Email" class="error"></span>
             </div>
             <div class="form-group">
@@ -29,7 +33,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Message" class="form-label"></label>
-                <input asp-for="Message" class="form-control">
+                <input asp-for="Message" class="form-control" required>
                 <span asp-validation-for="Message" class="error"></span>
             </div>
             <div class="terms form-checkbox-group">
@@ -44,47 +48,5 @@
     </div>
 </section>
 
-<script>
-    const form = document.querySelector('form');
-    form.addEventListener('submit', validateForm);
+<script src="/js/site.js"></script>
 
-    function validateForm(event) {
-        event.preventDefault();
-
-        const inputs = document.querySelectorAll('input');
-
-        resetValidation();
-
-        let isValid = true;
-
-        inputs.forEach(input => {
-            const errorElement = input.nextElementSibling;
-            const inputValue = input.value.trim();
-
-            if (inputValue === '') {
-                showError(input, errorElement, 'Fältet får inte vara tomt.');
-                isValid = false;
-            }
-        });
-        if (isValid) {
-            form.submit();
-        }
-    }
-
-    function showError(input, errorElement, errorMessage) {
-        input.classList.add('error');
-        errorElement.textContent = errorMessage;
-        errorElement.style.display = 'block';
-    }
-
-    function resetValidation() {
-        const errorElements = document.querySelectorAll('.error');
-
-        errorElements.forEach(errorElement => {
-            const input = errorElement.previousElementSibling;
-            input.classList.remove('error');
-            errorElement.textContent = '';
-            errorElement.style.display = 'none';
-        });
-    }
-</script>
