@@ -78,7 +78,7 @@ namespace WebApp.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> RegisterUser(RegisterViewModel viewModel)
+        public async Task<IActionResult> RegisterUser(UserRegisterViewModel viewModel)
         {
             if (ModelState.IsValid)
             {

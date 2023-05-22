@@ -20,6 +20,8 @@ public class HomeController : Controller
     {
         var viewModel = new HomeIndexViewModel
         {
+            Showcase = new ShowcaseViewModel(),
+
             New = new GridCollectionViewModel
             {
                 Title = "New",

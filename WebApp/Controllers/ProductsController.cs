@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Dynamic;
 using WebApp.Helpers.Services;
 using WebApp.Models.dto;
 using WebApp.ViewModels;
@@ -61,7 +59,6 @@ public class ProductsController : Controller
         return View(detailsViewModel);
     }
 
-
     private IEnumerable<Product> GetRandomProducts(IEnumerable<Product> products, int count)
     {
         var random = new Random();
@@ -69,13 +66,13 @@ public class ProductsController : Controller
         return randomProducts;
     }
 
-
-
-
     public IActionResult Search()
     {
-        ViewData["Title"] = "Search for products";
         return View();
     }
 
+    public IActionResult Cart()
+    {
+        return View();
+    }
 }

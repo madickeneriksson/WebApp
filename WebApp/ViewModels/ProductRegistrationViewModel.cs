@@ -17,10 +17,6 @@ public class ProductRegistrationViewModel
     [Display(Name = "Produktbeskrivning (valfritt)")]
     public string? Description { get; set; }
 
-    [Display(Name = "Rating (valfritt)")]
-    public string? Rating { get; set; }
-
-
     [Required(ErrorMessage = "Du måste ange ett produktpris")]
     [Display(Name = "Produktpris ")]
     [DataType(DataType.Currency)]

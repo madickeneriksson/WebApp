@@ -3,9 +3,6 @@
     ViewData["Title"] = "Skapa ny produkt:";
 }
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-
 <section class="productregister-form">
     <div class="container">
         <div class="title">@ViewData["Title"] </div>
@@ -15,17 +12,17 @@
         <form enctype="multipart/form-data" asp-action="ProductRegister" metod="post" novalidate>
             <div class="articlenumber form-group">
                 <label asp-for="ArticleNumber" class="form-label"></label>
-                <input asp-for="ArticleNumber" class="form-control">
+                <input asp-for="ArticleNumber" class="form-control" onkeyup="validateText(event)" />
                 <span asp-validation-for="ArticleNumber" class="error"></span>
             </div>
             <div class="name form-group">
                 <label asp-for="Name" class="form-label"></label>
-                <input asp-for="Name" class="form-control">
+                <input asp-for="Name" class="form-control" onkeyup="validateText(event)" />
                 <span asp-validation-for="Name" class="error"></span>
             </div>
               <div class="price form-group">
                 <label asp-for="Price" class="form-label"></label>
-                <input asp-for="Price" class="form-control">
+                <input asp-for="Price" class="form-control" onkeyup="validatePrice(event)" />
                 <span asp-validation-for="Price" class="error"></span>
             </div>
 
@@ -56,5 +53,3 @@
         </form>
     </div>
 </section>
-
-<script src="/js/site.js"></script>

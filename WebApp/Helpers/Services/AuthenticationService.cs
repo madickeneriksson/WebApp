@@ -31,7 +31,7 @@ namespace WebApp.Services
             //Kontrollera användare
         }
         // Registrera användare
-        public async Task<bool> RegisterUserAsync(RegisterViewModel viewModel)
+        public async Task<bool> RegisterUserAsync(UserRegisterViewModel viewModel)
         {
             AppUser appUser = viewModel;
             var roleName = "user";

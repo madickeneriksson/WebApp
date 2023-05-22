@@ -12,12 +12,12 @@
                 <label asp-for="Email" class="form-label">Email*
                     <a class="error" asp-controller="Register" asp-action="Index">Registrera ny användare</a>
                 </label>
-                <input asp-for="Email" class="form-control">
+                <input asp-for="Email" class="form-control" onkeyup="validateEmail(event)" />
                 <span asp-validation-for="Email" class="error"></span>
             </div>
             <div class="password form-group">
                 <label asp-for="Password" class="form-label"></label>
-                <input asp-for="Password" class="form-control">
+                <input asp-for="Password" class="form-control" onkeyup="validatePassword(event)" />
                 <span asp-validation-for="Password" class="error"></span>
             </div>
             <div class="rememberme terms form-checkbox-group">

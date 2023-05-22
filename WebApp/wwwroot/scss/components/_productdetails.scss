@@ -46,6 +46,20 @@
                     font-size: 20px;
                 }
 
+                .dotted-line {
+                    position: relative;
+                    padding: 5px;
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        right: 0;
+                        border-top: 1px dotted #000000;
+                    }
+                }
+
                 .rating {
                     margin-top: 20px;
                     display: flex;

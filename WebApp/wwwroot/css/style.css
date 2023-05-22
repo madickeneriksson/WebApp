@@ -1126,6 +1126,18 @@ footer .container {
   color: #292929;
   font-size: 20px;
 }
+.product-details .container .details .content .dotted-line {
+  position: relative;
+  padding: 5px;
+}
+.product-details .container .details .content .dotted-line::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  border-top: 1px dotted #000000;
+}
 .product-details .container .details .content .rating {
   margin-top: 20px;
   display: flex;

@@ -4,7 +4,7 @@ using WebApp.Models.Identity;
 
 namespace WebApp.ViewModels
 {
-    public class RegisterViewModel
+    public class UserRegisterViewModel
     {
         [Required(ErrorMessage ="Du måste ange ett förnamn")]
         [RegularExpression(@"^[A-Za-zåäöÅÄÖ]+(?:\s[A-Za-zåäöÅÄÖ]+)*$", ErrorMessage = "Du måste ange ett giltigt förnamn")]
@@ -61,7 +61,7 @@ namespace WebApp.ViewModels
         public bool TermsAndConditions { get; set; } = false;
 
 
-        public static implicit operator AppUser(RegisterViewModel viewModel) 
+        public static implicit operator AppUser(UserRegisterViewModel viewModel) 
         {
             return new AppUser
             {
@@ -73,7 +73,7 @@ namespace WebApp.ViewModels
                 CompapanyName = viewModel.Company,
             };
         }
-        public static implicit operator AddressEntity(RegisterViewModel viewModel)
+        public static implicit operator AddressEntity(UserRegisterViewModel viewModel)
         {
             return new AddressEntity
             {

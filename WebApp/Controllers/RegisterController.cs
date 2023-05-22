@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApp.Helpers.Services;
 using WebApp.Services;
 using WebApp.ViewModels;
 
@@ -20,7 +19,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public async Task <IActionResult> Index(RegisterViewModel viewModel)
+        public async Task <IActionResult> Index(UserRegisterViewModel viewModel)
         {
             if(ModelState.IsValid)
             {

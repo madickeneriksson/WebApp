@@ -31,6 +31,7 @@ function toggleMenu(attribute) {
     } catch { }
 
 }
+/*
 $('form').each(function () {
     $(this).validate({
         rules: {
@@ -146,8 +147,40 @@ $('form').each(function () {
         }
     });
 });
+*/
 
+const validateText = (event) => {
+    if (event.target.value.length >= 2)
+        document.querySelector(`[data-valmsg-for="${event.target.id}"]`).innerHTML = "";
+    else
+        document.querySelector(`[data-valmsg-for="${event.target.id}"]`).innerHTML = "Måste innehålla minst 2 tecken";
+};
 
+const validateEmail = (event) => {
+    const regEx = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    if (regEx.test(event.target.value))
+        document.querySelector(`[data-valmsg-for="${event.target.id}"]`).innerHTML = "";
+    else
+        document.querySelector(`[data-valmsg-for="${event.target.id}"]`).innerHTML = "Ogiltig emailadress";
+};
+
+const validatePassword = (event) => {
+    const regEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{2,}$/;
+
+    if (regEx.test(event.target.value))
+        document.querySelector(`[data-valmsg-for="${event.target.id}"]`).innerHTML = "";
+    else
+        document.querySelector(`[data-valmsg-for="${event.target.id}"]`).innerHTML = "Felaktigt lösenord, måste innehålla versal,siffra och specialtecken";
+};
+const validatePrice = (event) => {
+    const regEx = /^\d+$/;
+
+    if (regEx.test(event.target.value))
+        document.querySelector(`[data-valmsg-for="${event.target.id}"]`).innerHTML = "";
+    else
+        document.querySelector(`[data-valmsg-for="${event.target.id}"]`).innerHTML = "Endast siffror";
+};
 
 
 
