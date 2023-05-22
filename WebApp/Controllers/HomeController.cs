@@ -26,10 +26,13 @@ public class HomeController : Controller
                 Categories = new List<string> { "All", "Bag", "Dress", "Decoration", "Essentials", "Interior", "Laptops", "Mobile", "Beauty" },
                 Products = await _productRepository.GetProductsByTagAsync("New")
             },
-            Featured = new GridCollectionViewModel
+            Featured = new FeaturedCompositeViewModel
             {
-                Title = "Featured",
-                Products = await _productRepository.GetProductsByTagAsync("Featured")
+                UpToSell = new UpToSellViewModel(),
+                GridCollection = new GridCollectionViewModel
+                {
+                    Products = await _productRepository.GetProductsByTagAsync("Featured")
+                }
             },
             Popular = new GridCollectionViewModel
             {

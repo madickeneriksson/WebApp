@@ -28,7 +28,6 @@ public class ProductsController : Controller
 
     [HttpGet("/products/details/{articleNumber}")]
     public async Task<IActionResult> Details(string articlenumber)
-
     {
         var product = await _productService.GetAsync(articlenumber);
 
@@ -37,14 +36,43 @@ public class ProductsController : Controller
             return NotFound(); // Hantera om produkten inte hittas
         }
 
-        return View(product);
+        var viewModel = new ProductDetailsViewModel
+        {
+
+            RandomProducts = await _productService.GetRandomProductsAsync(4) // Hämta slumpmässiga produkter.
+        };
+
+        var productModel = new Product
+        {
+            ArticleNumber = product.ArticleNumber,
+            Description = product.Description,
+            Name = product.Name,
+            Price = product.Price,
+            ImageUrl= product.ImageUrl
+        };
+
+        var detailsViewModel = new ProductDetailsViewModel
+        {
+            Product = productModel,
+            RandomProducts = await _productService.GetRandomProductsAsync(4), // Hämta slumpmässiga produkter.
+            ExistingTags = product.Tags
+        };
+
+        return View(detailsViewModel);
+    }
+
+
+    private IEnumerable<Product> GetRandomProducts(IEnumerable<Product> products, int count)
+    {
+        var random = new Random();
+        var randomProducts = products.OrderBy(p => random.Next()).Take(count);
+        return randomProducts;
     }
 
 
 
 
-
-        public IActionResult Search()
+    public IActionResult Search()
     {
         ViewData["Title"] = "Search for products";
         return View();

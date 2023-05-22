@@ -48,41 +48,6 @@ namespace WebApp.Helpers.Services
             }
         }
 
-
-
-
-
-        /*
-                public async Task<Product> CreateAsync(ProductRegistrationViewModel viewModel)
-                {
-                    ProductEntity entity = viewModel;
-
-                    if (await _categoryService.GetCategoryAsync(entity.ProductCategoryId) != null) 
-                    { 
-                        entity = await _productRepo.AddAsync(entity);
-
-                    if (entity != null)
-                        {
-                        foreach(var tagName in viewModel.Tags)
-                            {
-                                var tag = await _tagService.GetTagAsync(tagName);
-                                tag ??=await _tagService.CreateTagAsync(tagName);
-
-                                await _tagRepository.AddAsync(new ProductTagEntity
-                                {
-                                    ArticleNumber = viewModel.ArticleNumber,
-                                    TagId = tag.Id,
-                                });
-                            }
-                        return await GetAsync(entity.ArticleNumber);
-                        } 
-
-
-                    }
-                    return null!;
-
-                }
-         */
         public async Task<Product> GetAsync(string articlenumber)
         {
             var entity = await _productRepo.GetAsync(x => x.ArticleNumber== articlenumber);

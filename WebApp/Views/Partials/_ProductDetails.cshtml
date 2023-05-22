@@ -1,22 +1,22 @@
-﻿@model WebApp.Models.dto.Product
+﻿@model ProductDetailsViewModel
 
 ﻿<section class="product-details">
     <div class="container">
         <div class="details">
             <div class="product-image">
-                <img src="~/images/placeholders/@Model.ImageUrl" alt="@Model.Name">
+                <img src="~/images/placeholders/@Model.Product.ImageUrl" alt="@Model.Product.Name">
 
                 <div class="details-image">
-                    <img src="~/images/placeholders/@Model.ImageUrl" alt="@Model.Name">
-                    <img src="~/images/placeholders/@Model.ImageUrl" alt="@Model.Name">
-                    <img src="~/images/placeholders/@Model.ImageUrl" alt="@Model.Name">
-                    <img src="~/images/placeholders/@Model.ImageUrl" alt="@Model.Name">
+                    <img src="~/images/placeholders/@Model.Product.ImageUrl" alt="@Model.Product.Name">
+                    <img src="~/images/placeholders/@Model.Product.ImageUrl" alt="@Model.Product.Name">
+                    <img src="~/images/placeholders/@Model.Product.ImageUrl" alt="@Model.Product.Name">
+                    <img src="~/images/placeholders/@Model.Product.ImageUrl" alt="@Model.Product.Name">
                 </div>
             </div>
 
             <div class="content">
                 <div class="title">Young Star Smart Shoe in Fashion</div>
-                <div class="small-description"> Eventuell beskrivning. @Model.Description</div>
+                <div class="small-description"> Eventuell beskrivning kommer stå här. @Model.Product.Description</div>
                 <div class="rating">
                     <i class="fa-solid fa-star" style="color: #fff824;"></i>
                     <i class="fa-solid fa-star" style="color: #fff824;"></i>
@@ -25,7 +25,7 @@
                     <i class="fa-solid fa-star" style="color: #fff824;"></i>
                     <div class="reviews">16</div>
                 </div>
-                <div class="price">@Model.Price</div>
+                <div class="price">@Model.Product.Price</div>
 
                 <div class="add-to-cart">
                     <div class="btn-group" role="group" aria-label="Basic outlined example">
@@ -42,7 +42,9 @@
                 </div>
 
                 <button class="btn-outline-white">Add To Wishlist</button>
-                <div class="category">Category</div>
+                <div class="category"> Denna produkt tillhör Kategorin/Tagen: 
+                    @foreach (var tag in Model.ExistingTags) { @tag.TagName}
+                </div>
             </div>
         </div>
     </div>

@@ -1,36 +1,15 @@
-﻿﻿<section class="related-products">
-    <div class="container">
-        <div class="section-title">Related Products</div>
+﻿@model ProductDetailsViewModel
 
-        <div class="related-products-item">
-            <div class="item-group">
-                <div class="image"><img src="~/images/placeholders/270x295.svg" alt=""></div>
-                <div class="body">
-                    <div class="title">Apple watch collection</div>
-                    <div class="price">$30.00</div>
-                </div>
-            </div>
-            <div class="item-group">
-                <div class="image"><img src="~/images/placeholders/270x295.svg" alt=""></div>
-                <div class="body">
-                    <div class="title">Apple watch collection</div>
-                    <div class="price">$30.00</div>
-                </div>
-            </div>
-            <div class="item-group">
-                <div class="image"><img src="~/images/placeholders/270x295.svg" alt=""></div>
-                <div class="body">
-                    <div class="title">Apple watch collection</div>
-                    <div class="price">$30.00</div>
-                </div>
-            </div>
-            <div class="item-group">
-                <div class="image"><img src="~/images/placeholders/270x295.svg" alt=""></div>
-                <div class="body">
-                    <div class="title">Apple watch collection</div>
-                    <div class="price">$30.00</div>
-                </div>
-            </div>
+<section class="grid-collection">
+    <div class="container">
+        <div class="title">Related Products</div>
+        <div class="grid">
+            @foreach (var randomProduct in Model.RandomProducts)
+            {
+            <partial name="/Views/Partials/_GridCollectionItem.cshtml" model="randomProduct" />
+            }
+
         </div>
     </div>
 </section>
+

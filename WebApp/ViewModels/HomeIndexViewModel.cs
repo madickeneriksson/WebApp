@@ -5,7 +5,7 @@
         public string Title { get; set; } = "Home";
         public GridCollectionViewModel New { get; set; } = null!;
 
-        public GridCollectionViewModel Featured { get; set; } = null!;
+        public FeaturedCompositeViewModel Featured { get; set; } = null!;
 
         public GridCollectionViewModel Popular { get; set; } = null!;
     }

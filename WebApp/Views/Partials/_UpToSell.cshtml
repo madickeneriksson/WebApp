@@ -1,4 +1,4 @@
-﻿@model GridCollectionViewModel
+﻿@model FeaturedCompositeViewModel
 @{
     ViewData["Title"] = "Produkter";
     var products = await productService.GetAllAsync();
@@ -7,10 +7,10 @@
     <div class="container">
         <div class="collection-grid">
             <div class="item-1">
-                @if (Model.Products != null)
+                @if (Model.GridCollection.Products != null)
                 {
                     <div class="grid">
-                        @foreach (var productViewModel in Model.Products.Take(1))
+                        @foreach (var productViewModel in Model.GridCollection.Products.Take(1))
                         {
                         <partial name="/Views/Partials/_CollectionContentItem.cshtml" model="productViewModel" />
                         }
@@ -20,19 +20,23 @@
             <div class="discover">
                 <div class="collection-content">
                     <div class="container">
-                        <div class="title-red">UP TO SELL</div>
-                        <div class="title">50% OFF</div>
-                        <div class="ingress">Get the Best Price</div>
-                        <div class="text">Get the best daily offer et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren no sea taki</div>
-                        <a href="#" class="link">Discover More</a>
+                        @if (Model.UpToSell != null)
+                        {
+                            <div class="title-red">@Model.UpToSell.Title</div>
+                            <div class="title">@Model.UpToSell.BigTitle</div>
+                            <div class="ingress">@Model.UpToSell.Ingress</div>
+                            <div class="text">@Model.UpToSell.Text</div>
+                            <a href="#" class="link">Discover More</a>                          
+                        }
+           
                     </div>
                 </div>
             </div>
             <div class="item-2">
-                @if (Model.Products != null)
+                @if (Model.GridCollection.Products != null)
                 {
                     <div class="grid">
-                        @foreach (var productViewModel in Model.Products.Skip(1).Take(1))
+                        @foreach (var productViewModel in Model.GridCollection.Products.Skip(1).Take(1))
                         {
                         <partial name="/Views/Partials/_CollectionContentItem.cshtml" model="productViewModel" />
                         }
