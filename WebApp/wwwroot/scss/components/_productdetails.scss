@@ -1,4 +1,6 @@
-﻿.product-details {
+﻿$color-dark-4: #AEAEAE;
+
+.product-details {
     margin-top: 50px;
 
     .container {
@@ -82,11 +84,17 @@
                 .add-to-cart {
                     .btn-group {
                         button {
+                            border-color: $color-dark-4;
                             color: $color-dark-4;
+
+                            &:hover {
+                                color: $color-dark-3 !important;
+                                background-color: transparent !important;
+                            }
                         }
 
                         .btn-outline-primary {
-                            color: $color-dark-4;
+                            border-color: $color-dark-4;
                         }
                     }
 
@@ -100,16 +108,13 @@
                     margin: 20px 40px;
                 }
 
-                .btn-outline-white {
-                    margin: 40px 60px;
-                }
 
                 .category {
+                    margin-top:30px;
                     font-family: $font-poppins;
                     color: $color-dark-2;
                     font-size: 15px;
                     font-weight: $font-weight-bold;
-                    margin: 30px 60px;
                 }
             }
         }

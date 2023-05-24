@@ -899,17 +899,6 @@ footer .container {
     grid-template-areas: "name email" "phoneNumber companyName" "message message" "terms terms" "button button";
   }
 }
-.contact-form form form .error {
-  color: red;
-}
-.contact-form form form .field-validation-error {
-  color: red;
-}
-.contact-form form form .error input,
-.contact-form form form .error select,
-.contact-form form form .error textarea {
-  border: 1px solid red;
-}
 .contact-form form .name {
   grid-area: name;
 }
@@ -1155,10 +1144,15 @@ footer .container {
   font-weight: 700;
 }
 .product-details .container .details .content .add-to-cart .btn-group button {
+  border-color: #AEAEAE;
   color: #AEAEAE;
 }
+.product-details .container .details .content .add-to-cart .btn-group button:hover {
+  color: #636363 !important;
+  background-color: transparent !important;
+}
 .product-details .container .details .content .add-to-cart .btn-group .btn-outline-primary {
-  color: #AEAEAE;
+  border-color: #AEAEAE;
 }
 .product-details .container .details .content .add-to-cart .btn-theme {
   margin-left: 60px;
@@ -1167,15 +1161,12 @@ footer .container {
   display: block;
   margin: 20px 40px;
 }
-.product-details .container .details .content .btn-outline-white {
-  margin: 40px 60px;
-}
 .product-details .container .details .content .category {
+  margin-top: 30px;
   font-family: "Poppins", sans-serif;
   color: #292929;
   font-size: 15px;
   font-weight: 700;
-  margin: 30px 60px;
 }
 
 .product-info .container .btn-outline-white {
@@ -1348,25 +1339,25 @@ footer .container {
 }
 @media (min-width: 992px) {
   .show-customer {
-    padding: 150px 0;
+    padding: 100px 0;
   }
 }
 .show-customer .container {
   border: 0px solid #E1E1E1;
-  padding: 50px;
+  padding: 30px;
   align-items: center;
 }
 @media (min-width: 768px) {
   .show-customer .container {
     border: 1px solid #E1E1E1;
-    width: 70%;
+    width: 80%;
   }
 }
 .show-customer .container .title {
   font-family: "Poppins", sans-serif;
   color: #636363;
   font-size: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 .show-customer .container .content {
   display: flex;
