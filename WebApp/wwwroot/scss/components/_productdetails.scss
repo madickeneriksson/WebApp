@@ -103,14 +103,27 @@
                     }
                 }
 
-                .colour {
-                    display: block;
-                    margin: 20px 40px;
+                .smal-info {
+                    padding: 10px;
+                    display:flex;
+
+
+                    .colour {
+                        display: block;
+                        margin-right:30px;
+
+                    }
+
+                    .number {
+                        display: block;
+                        font-size: 20px;
+                    }
                 }
 
 
+
                 .category {
-                    margin-top:30px;
+                    margin-top: 30px;
                     font-family: $font-poppins;
                     color: $color-dark-2;
                     font-size: 15px;

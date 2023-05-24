@@ -613,12 +613,12 @@ footer .container {
   text-align: center;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 35px;
   color: #292929;
 }
 @media (min-width: 768px) {
   .grid-collection .title {
-    font-size: 48px;
+    font-size: 35px;
   }
 }
 .grid-collection .categories {
@@ -1157,9 +1157,17 @@ footer .container {
 .product-details .container .details .content .add-to-cart .btn-theme {
   margin-left: 60px;
 }
-.product-details .container .details .content .colour {
+.product-details .container .details .content .smal-info {
+  padding: 10px;
+  display: flex;
+}
+.product-details .container .details .content .smal-info .colour {
   display: block;
-  margin: 20px 40px;
+  margin-right: 30px;
+}
+.product-details .container .details .content .smal-info .number {
+  display: block;
+  font-size: 20px;
 }
 .product-details .container .details .content .category {
   margin-top: 30px;

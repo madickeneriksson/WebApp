@@ -5,11 +5,11 @@
         text-align: center; 
         font-family: $font-poppins ;
         font-weight: $font-weight-semibold;
-        font-size: 30px;
+        font-size: 35px;
         color: $color-dark-2;
 
         @include md {
-            font-size: 48px;
+            font-size: 35px;
         }
     }
     
