@@ -14,7 +14,7 @@
             border: 1px solid $color-dark-5;
             width: 80%;
         }
-      
+
 
         .title {
             font-family: $font-poppins;
@@ -52,28 +52,30 @@
             color: $color-dark-3;
         }
 
-        .btn-theme {
-            margin-left: 50px;
+        .user-row {
+            display: flex;
+            align-items: center;
+        }
+
+        .text {
+            flex-grow: 1;
+            margin-right: 10px;
         }
 
         .role-form {
-            margin: 5px;
             display: flex;
             align-items: center;
+        }
+
+        .change-role-text {
+            margin-right: 10px;
+            font-family: $font-poppins;
+            font-size: 16px;
         }
 
         .role-form select {
             margin-right: 10px;
             padding: 5px;
-            font-family: $font-poppins;
-            font-size: 16px;
-        }
-
-        .role-form button {
-            padding: 5px 15px;
-            color: white;
-            border: none;
-            border-radius: 10px;
             font-family: $font-poppins;
             font-size: 16px;
         }

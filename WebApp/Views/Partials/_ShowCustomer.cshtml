@@ -9,14 +9,19 @@
             @foreach (var user in Model)
             {
                 <div class="user-row">
-                    <div class="text">@user.FirstName @user.LastName <div class="text-smal">Nuvarande roll:</div> <div class="role">@foreach (var role in await _userManager.GetRolesAsync(user)){ @role }</div></div>
-                    <button class="btn-theme">Ändra roll</button>
-                    <form class="role-form" method="post" action="/admin/changeRole">
-                    <select name="role">
+                    <div class="text">@user.FirstName @user.LastName <div class="text-smal">Nuvarande roll:</div> <div class="role">@foreach (var role in await _userManager.GetRolesAsync(user))
+                            {
+                                @role
+                            }</div></div>
+                    
+                    <form class="role-form" method="post" action="/admin/ChangeRole">
+                        <span class="change-role-text">Ändra nuvarande roll:</span>
+                        <select name="role">
                             <option value="user">User</option>
                             <option value="admin">Admin</option>
-                     </select>
-                     <input type="hidden" name="userId" value="@user.Id" />
+                        </select>
+                        <input type="hidden" name="userId" value="@user.Id" />
+                        <button type="submit" class="btn-theme">Bekräfta</button>
                     </form>
                 </div>
             }

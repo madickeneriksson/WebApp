@@ -1391,25 +1391,26 @@ footer .container {
   font-size: 15px;
   color: #636363;
 }
-.show-customer .container .btn-theme {
-  margin-left: 50px;
-}
-.show-customer .container .role-form {
-  margin: 5px;
+.show-customer .container .user-row {
   display: flex;
   align-items: center;
+}
+.show-customer .container .text {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+.show-customer .container .role-form {
+  display: flex;
+  align-items: center;
+}
+.show-customer .container .change-role-text {
+  margin-right: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
 }
 .show-customer .container .role-form select {
   margin-right: 10px;
   padding: 5px;
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-}
-.show-customer .container .role-form button {
-  padding: 5px 15px;
-  color: white;
-  border: none;
-  border-radius: 10px;
   font-family: "Poppins", sans-serif;
   font-size: 16px;
 }

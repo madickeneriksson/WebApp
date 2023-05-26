@@ -71,6 +71,20 @@ namespace WebApp.Controllers
             return View(customer);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> ChangeRole(string userId, string role)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                var currentRoles = await _userManager.GetRolesAsync(user);
+                await _userManager.RemoveFromRolesAsync(user, currentRoles);
+                await _userManager.AddToRoleAsync(user, role);
+            }
+
+            return RedirectToAction("ShowCustomer");
+        }
+
         public IActionResult RegisterUser()
         {
             return View();
@@ -91,19 +105,7 @@ namespace WebApp.Controllers
             return View(viewModel);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> ChangeRole(string userId, string role)
-        {
-            var user = await _userManager.FindByIdAsync(userId);
-            if (user != null)
-            {
-                var currentRoles = await _userManager.GetRolesAsync(user);
-                await _userManager.RemoveFromRolesAsync(user, currentRoles);
-                await _userManager.AddToRoleAsync(user, role);
-            }
-
-            return RedirectToAction("ShowCustomer"); 
-        }
+      
 
     }
 }
